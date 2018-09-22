@@ -1,3 +1,4 @@
+package pageObjects;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
@@ -1507,113 +1508,7 @@ public class TshirtsPage {
         return this;
     }
 
-    /**
-     * Unset Casual 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetCasual1CheckboxField() {
-        if (casual1.isSelected()) {
-            casual1.click();
-        }
-        return this;
-    }
 
-    /**
-     * Unset Cotton 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetCotton1CheckboxField() {
-        if (cotton1.isSelected()) {
-            cotton1.click();
-        }
-        return this;
-    }
-
-    /**
-     * Unset Fashion Manufacturer 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetFashionManufacturer1CheckboxField() {
-        if (fashionManufacturer1.isSelected()) {
-            fashionManufacturer1.click();
-        }
-        return this;
-    }
-
-    /**
-     * Unset In Stock 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetInStock1CheckboxField() {
-        if (inStock1.isSelected()) {
-            inStock1.click();
-        }
-        return this;
-    }
-
-    /**
-     * Unset L 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetL1CheckboxField() {
-        if (l1.isSelected()) {
-            l1.click();
-        }
-        return this;
-    }
-
-    /**
-     * Unset M 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetM1CheckboxField() {
-        if (m1.isSelected()) {
-            m1.click();
-        }
-        return this;
-    }
-
-    /**
-     * Unset New 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetNew1CheckboxField() {
-        if (new1.isSelected()) {
-            new1.click();
-        }
-        return this;
-    }
-
-    /**
-     * Unset S 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetS1CheckboxField() {
-        if (s1.isSelected()) {
-            s1.click();
-        }
-        return this;
-    }
-
-    /**
-     * Unset Short Sleeve 1 Checkbox field.
-     *
-     * @return the TshirtsPage class instance.
-     */
-    public TshirtsPage unsetShortSleeve1CheckboxField() {
-        if (shortSleeve1.isSelected()) {
-            shortSleeve1.click();
-        }
-        return this;
-    }
 
     /**
      * Unset default value from Sort By Drop Down List field.

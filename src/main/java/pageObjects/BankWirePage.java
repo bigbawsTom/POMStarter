@@ -1,3 +1,4 @@
+package pageObjects;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ShoppingCartPage {
+public class BankWirePage {
     private Map<String, String> data;
     private WebDriver driver;
     private int timeout = 15;
@@ -16,6 +17,10 @@ public class ShoppingCartPage {
     @FindBy(css = "a[title='About us']")
     @CacheLookup
     private WebElement aboutUs;
+
+    @FindBy(css = "#order_step li:nth-of-type(3) a")
+    @CacheLookup
+    private WebElement address03;
 
     @FindBy(css = "a[title='Best sellers']")
     @CacheLookup
@@ -49,14 +54,6 @@ public class ShoppingCartPage {
     @CacheLookup
     private WebElement checkOut;
 
-    @FindBy(css = "#center_column div:nth-of-type(1) div:nth-of-type(2) small a")
-    @CacheLookup
-    private WebElement colorOrangeSize;
-
-    @FindBy(css = "#product_1_1_0_101119 td:nth-of-type(2) small:nth-of-type(2) a")
-    @CacheLookup
-    private WebElement colorOrangeSizeS;
-
     @FindBy(css = "a[title='Contact Us']")
     @CacheLookup
     private WebElement contactUs1;
@@ -64,10 +61,6 @@ public class ShoppingCartPage {
     @FindBy(css = "a[title='Contact us']")
     @CacheLookup
     private WebElement contactUs2;
-
-    @FindBy(css = "a.button-exclusive.btn.btn-default")
-    @CacheLookup
-    private WebElement continueShopping;
 
     @FindBy(css = "#block_top_menu ul.sf-menu.clearfix.menu-content.sf-js-enabled.sf-arrows li:nth-of-type(1) ul.submenu-container.clearfix.first-in-line-xs li:nth-of-type(2) a.sf-with-ul")
     @CacheLookup
@@ -111,23 +104,7 @@ public class ShoppingCartPage {
 
     @FindBy(css = "a.cart-images")
     @CacheLookup
-    private WebElement fadedShortSleeveTshirts1;
-
-    @FindBy(css = "#center_column div:nth-of-type(1) div:nth-of-type(2) p.product-name a")
-    @CacheLookup
-    private WebElement fadedShortSleeveTshirts2;
-
-    @FindBy(css = "#product_1_1_0_101119 td:nth-of-type(1) a")
-    @CacheLookup
-    private WebElement fadedShortSleeveTshirts3;
-
-    @FindBy(css = "#product_1_1_0_101119 td:nth-of-type(2) p.product-name a")
-    @CacheLookup
-    private WebElement fadedShortSleeveTshirts4;
-
-    @FindBy(name = "quantity_1_1_0_101119")
-    @CacheLookup
-    private WebElement fadedShortSleeveTshirts5;
+    private WebElement fadedShortSleeveTshirts;
 
     @FindBy(css = "a.account")
     @CacheLookup
@@ -136,6 +113,10 @@ public class ShoppingCartPage {
     @FindBy(css = "a[href='https://plus.google.com/111979135243110831526/posts']")
     @CacheLookup
     private WebElement googlePlus;
+
+    @FindBy(css = "button.button.btn.btn-default.button-medium")
+    @CacheLookup
+    private WebElement iConfirmMyOrder;
 
     @FindBy(css = "a[title='Manage my customer account']")
     @CacheLookup
@@ -169,21 +150,21 @@ public class ShoppingCartPage {
     @CacheLookup
     private WebElement orangeS;
 
+    @FindBy(css = "a.button-exclusive.btn.btn-default")
+    @CacheLookup
+    private WebElement otherPaymentMethods;
+
     @FindBy(css = "a[title='Our stores']")
     @CacheLookup
     private WebElement ourStores;
 
-    private final String pageLoadedText = "Faded Short Sleeve T-shirts";
+    private final String pageLoadedText = "- Bank wire account information will be displayed on the next page";
 
-    private final String pageUrl = "/index.php?controller=order";
+    private final String pageUrl = "/index.php?fc=module&module=bankwire&controller=payment";
 
-    @FindBy(css = "#layer_cart div:nth-of-type(1) div:nth-of-type(2) div:nth-of-type(4) a.btn.btn-default.button.button-medium")
+    @FindBy(css = "a.btn.btn-default.button.button-medium")
     @CacheLookup
-    private WebElement proceedToCheckout1;
-
-    @FindBy(css = "a.button.btn.btn-default.standard-checkout.button-medium")
-    @CacheLookup
-    private WebElement proceedToCheckout2;
+    private WebElement proceedToCheckout;
 
     @FindBy(id = "search_query_top")
     @CacheLookup
@@ -192,6 +173,14 @@ public class ShoppingCartPage {
     @FindBy(name = "submit_search")
     @CacheLookup
     private WebElement search;
+
+    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=order&step=2&multi-shipping=0']")
+    @CacheLookup
+    private WebElement shipping04;
+
+    @FindBy(css = "#order_step li:nth-of-type(2) a")
+    @CacheLookup
+    private WebElement signIn02;
 
     @FindBy(css = "a.logout")
     @CacheLookup
@@ -208,6 +197,10 @@ public class ShoppingCartPage {
     @FindBy(css = "a[title='Specials']")
     @CacheLookup
     private WebElement specials;
+
+    @FindBy(css = "#order_step li:nth-of-type(1) a")
+    @CacheLookup
+    private WebElement summary01;
 
     @FindBy(css = "#block_top_menu ul.sf-menu.clearfix.menu-content.sf-js-enabled.sf-arrows li:nth-of-type(1) ul.submenu-container.clearfix.first-in-line-xs li:nth-of-type(2) ul li:nth-of-type(3) a")
     @CacheLookup
@@ -265,20 +258,20 @@ public class ShoppingCartPage {
     @CacheLookup
     private WebElement youtube;
 
-    public ShoppingCartPage() {
+    public BankWirePage() {
     }
 
-    public ShoppingCartPage(WebDriver driver) {
+    public BankWirePage(WebDriver driver) {
         this();
         this.driver = driver;
     }
 
-    public ShoppingCartPage(WebDriver driver, Map<String, String> data) {
+    public BankWirePage(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
     }
 
-    public ShoppingCartPage(WebDriver driver, Map<String, String> data, int timeout) {
+    public BankWirePage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
     }
@@ -286,19 +279,29 @@ public class ShoppingCartPage {
     /**
      * Click on About Us Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickAboutUsLink() {
+    public BankWirePage clickAboutUsLink() {
         aboutUs.click();
+        return this;
+    }
+
+    /**
+     * Click on 03. Address Link.
+     *
+     * @return the BankWirePage class instance.
+     */
+    public BankWirePage clickAddressLink03() {
+        address03.click();
         return this;
     }
 
     /**
      * Click on Best Sellers Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickBestSellersLink() {
+    public BankWirePage clickBestSellersLink() {
         bestSellers.click();
         return this;
     }
@@ -306,9 +309,9 @@ public class ShoppingCartPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickBlouses1Link() {
+    public BankWirePage clickBlouses1Link() {
         blouses1.click();
         return this;
     }
@@ -316,9 +319,9 @@ public class ShoppingCartPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickBlouses2Link() {
+    public BankWirePage clickBlouses2Link() {
         blouses2.click();
         return this;
     }
@@ -326,9 +329,9 @@ public class ShoppingCartPage {
     /**
      * Click on Cart 1 Product Products 16.51 Empty Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickCart1ProductProducts1651Link() {
+    public BankWirePage clickCart1ProductProducts1651Link() {
         cart1ProductProducts1651.click();
         return this;
     }
@@ -336,9 +339,9 @@ public class ShoppingCartPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickCasualDresses1Link() {
+    public BankWirePage clickCasualDresses1Link() {
         casualDresses1.click();
         return this;
     }
@@ -346,9 +349,9 @@ public class ShoppingCartPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickCasualDresses2Link() {
+    public BankWirePage clickCasualDresses2Link() {
         casualDresses2.click();
         return this;
     }
@@ -356,9 +359,9 @@ public class ShoppingCartPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickCasualDresses3Link() {
+    public BankWirePage clickCasualDresses3Link() {
         casualDresses3.click();
         return this;
     }
@@ -366,39 +369,19 @@ public class ShoppingCartPage {
     /**
      * Click on Check Out Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickCheckOutLink() {
+    public BankWirePage clickCheckOutLink() {
         checkOut.click();
-        return this;
-    }
-
-    /**
-     * Click on Color Orange Size S Link.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage clickColorOrangeSizeLink() {
-        colorOrangeSize.click();
-        return this;
-    }
-
-    /**
-     * Click on Color Orange Size S Link.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage clickColorOrangeSizeSLink() {
-        colorOrangeSizeS.click();
         return this;
     }
 
     /**
      * Click on Contact Us Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickContactUs1Link() {
+    public BankWirePage clickContactUs1Link() {
         contactUs1.click();
         return this;
     }
@@ -406,29 +389,19 @@ public class ShoppingCartPage {
     /**
      * Click on Contact Us Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickContactUs2Link() {
+    public BankWirePage clickContactUs2Link() {
         contactUs2.click();
-        return this;
-    }
-
-    /**
-     * Click on Continue Shopping Link.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage clickContinueShoppingLink() {
-        continueShopping.click();
         return this;
     }
 
     /**
      * Click on Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickDresses1Link() {
+    public BankWirePage clickDresses1Link() {
         dresses1.click();
         return this;
     }
@@ -436,9 +409,9 @@ public class ShoppingCartPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickDresses2Link() {
+    public BankWirePage clickDresses2Link() {
         dresses2.click();
         return this;
     }
@@ -446,9 +419,9 @@ public class ShoppingCartPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickDresses3Link() {
+    public BankWirePage clickDresses3Link() {
         dresses3.click();
         return this;
     }
@@ -456,9 +429,9 @@ public class ShoppingCartPage {
     /**
      * Click on Ecommerce Software By Prestashop Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickEcommerceSoftwareByPrestashopLink() {
+    public BankWirePage clickEcommerceSoftwareByPrestashopLink() {
         ecommerceSoftwareByPrestashop.click();
         return this;
     }
@@ -466,9 +439,9 @@ public class ShoppingCartPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickEveningDresses1Link() {
+    public BankWirePage clickEveningDresses1Link() {
         eveningDresses1.click();
         return this;
     }
@@ -476,9 +449,9 @@ public class ShoppingCartPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickEveningDresses2Link() {
+    public BankWirePage clickEveningDresses2Link() {
         eveningDresses2.click();
         return this;
     }
@@ -486,9 +459,9 @@ public class ShoppingCartPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickEveningDresses3Link() {
+    public BankWirePage clickEveningDresses3Link() {
         eveningDresses3.click();
         return this;
     }
@@ -496,9 +469,9 @@ public class ShoppingCartPage {
     /**
      * Click on Facebook Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickFacebookLink() {
+    public BankWirePage clickFacebookLink() {
         facebook.click();
         return this;
     }
@@ -506,9 +479,9 @@ public class ShoppingCartPage {
     /**
      * Click on Faded... Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickFadedLink() {
+    public BankWirePage clickFadedLink() {
         faded.click();
         return this;
     }
@@ -516,49 +489,19 @@ public class ShoppingCartPage {
     /**
      * Click on Faded Short Sleeve Tshirts Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickFadedShortSleeveTshirts1Link() {
-        fadedShortSleeveTshirts1.click();
-        return this;
-    }
-
-    /**
-     * Click on Faded Short Sleeve Tshirts Link.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage clickFadedShortSleeveTshirts2Link() {
-        fadedShortSleeveTshirts2.click();
-        return this;
-    }
-
-    /**
-     * Click on Faded Short Sleeve Tshirts Link.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage clickFadedShortSleeveTshirts3Link() {
-        fadedShortSleeveTshirts3.click();
-        return this;
-    }
-
-    /**
-     * Click on Faded Short Sleeve Tshirts Link.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage clickFadedShortSleeveTshirts4Link() {
-        fadedShortSleeveTshirts4.click();
+    public BankWirePage clickFadedShortSleeveTshirtsLink() {
+        fadedShortSleeveTshirts.click();
         return this;
     }
 
     /**
      * Click on Frodo Lastname Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickFrodoLastnameLink() {
+    public BankWirePage clickFrodoLastnameLink() {
         frodoLastname.click();
         return this;
     }
@@ -566,19 +509,29 @@ public class ShoppingCartPage {
     /**
      * Click on Google Plus Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickGooglePlusLink() {
+    public BankWirePage clickGooglePlusLink() {
         googlePlus.click();
+        return this;
+    }
+
+    /**
+     * Click on I Confirm My Order Button.
+     *
+     * @return the BankWirePage class instance.
+     */
+    public BankWirePage clickIConfirmMyOrderButton() {
+        iConfirmMyOrder.click();
         return this;
     }
 
     /**
      * Click on My Account Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickMyAccountLink() {
+    public BankWirePage clickMyAccountLink() {
         myAccount.click();
         return this;
     }
@@ -586,9 +539,9 @@ public class ShoppingCartPage {
     /**
      * Click on My Addresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickMyAddressesLink() {
+    public BankWirePage clickMyAddressesLink() {
         myAddresses.click();
         return this;
     }
@@ -596,9 +549,9 @@ public class ShoppingCartPage {
     /**
      * Click on My Credit Slips Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickMyCreditSlipsLink() {
+    public BankWirePage clickMyCreditSlipsLink() {
         myCreditSlips.click();
         return this;
     }
@@ -606,9 +559,9 @@ public class ShoppingCartPage {
     /**
      * Click on My Orders Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickMyOrdersLink() {
+    public BankWirePage clickMyOrdersLink() {
         myOrders.click();
         return this;
     }
@@ -616,9 +569,9 @@ public class ShoppingCartPage {
     /**
      * Click on My Personal Info Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickMyPersonalInfoLink() {
+    public BankWirePage clickMyPersonalInfoLink() {
         myPersonalInfo.click();
         return this;
     }
@@ -626,9 +579,9 @@ public class ShoppingCartPage {
     /**
      * Click on New Products Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickNewProductsLink() {
+    public BankWirePage clickNewProductsLink() {
         newProducts.click();
         return this;
     }
@@ -636,9 +589,9 @@ public class ShoppingCartPage {
     /**
      * Click on Ok Button.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickOkButton() {
+    public BankWirePage clickOkButton() {
         ok.click();
         return this;
     }
@@ -646,19 +599,29 @@ public class ShoppingCartPage {
     /**
      * Click on Orange S Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickOrangeSLink() {
+    public BankWirePage clickOrangeSLink() {
         orangeS.click();
+        return this;
+    }
+
+    /**
+     * Click on Other Payment Methods Link.
+     *
+     * @return the BankWirePage class instance.
+     */
+    public BankWirePage clickOtherPaymentMethodsLink() {
+        otherPaymentMethods.click();
         return this;
     }
 
     /**
      * Click on Our Stores Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickOurStoresLink() {
+    public BankWirePage clickOurStoresLink() {
         ourStores.click();
         return this;
     }
@@ -666,39 +629,49 @@ public class ShoppingCartPage {
     /**
      * Click on Proceed To Checkout Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickProceedToCheckout1Link() {
-        proceedToCheckout1.click();
-        return this;
-    }
-
-    /**
-     * Click on Proceed To Checkout Link.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage clickProceedToCheckout2Link() {
-        proceedToCheckout2.click();
+    public BankWirePage clickProceedToCheckoutLink() {
+        proceedToCheckout.click();
         return this;
     }
 
     /**
      * Click on Search Button.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSearchButton() {
+    public BankWirePage clickSearchButton() {
         search.click();
+        return this;
+    }
+
+    /**
+     * Click on 04. Shipping Link.
+     *
+     * @return the BankWirePage class instance.
+     */
+    public BankWirePage clickShippingLink04() {
+        shipping04.click();
+        return this;
+    }
+
+    /**
+     * Click on 02. Sign In Link.
+     *
+     * @return the BankWirePage class instance.
+     */
+    public BankWirePage clickSignInLink02() {
+        signIn02.click();
         return this;
     }
 
     /**
      * Click on Sign Out Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSignOut1Link() {
+    public BankWirePage clickSignOut1Link() {
         signOut1.click();
         return this;
     }
@@ -706,9 +679,9 @@ public class ShoppingCartPage {
     /**
      * Click on Sign Out Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSignOut2Link() {
+    public BankWirePage clickSignOut2Link() {
         signOut2.click();
         return this;
     }
@@ -716,9 +689,9 @@ public class ShoppingCartPage {
     /**
      * Click on Sitemap Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSitemapLink() {
+    public BankWirePage clickSitemapLink() {
         sitemap.click();
         return this;
     }
@@ -726,19 +699,29 @@ public class ShoppingCartPage {
     /**
      * Click on Specials Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSpecialsLink() {
+    public BankWirePage clickSpecialsLink() {
         specials.click();
+        return this;
+    }
+
+    /**
+     * Click on 01. Summary Link.
+     *
+     * @return the BankWirePage class instance.
+     */
+    public BankWirePage clickSummaryLink01() {
+        summary01.click();
         return this;
     }
 
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSummerDresses1Link() {
+    public BankWirePage clickSummerDresses1Link() {
         summerDresses1.click();
         return this;
     }
@@ -746,9 +729,9 @@ public class ShoppingCartPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSummerDresses2Link() {
+    public BankWirePage clickSummerDresses2Link() {
         summerDresses2.click();
         return this;
     }
@@ -756,9 +739,9 @@ public class ShoppingCartPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSummerDresses3Link() {
+    public BankWirePage clickSummerDresses3Link() {
         summerDresses3.click();
         return this;
     }
@@ -766,9 +749,9 @@ public class ShoppingCartPage {
     /**
      * Click on Supportseleniumframework.com Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickSupportseleniumframeworkComLink() {
+    public BankWirePage clickSupportseleniumframeworkComLink() {
         supportseleniumframeworkCom.click();
         return this;
     }
@@ -776,9 +759,9 @@ public class ShoppingCartPage {
     /**
      * Click on Terms And Conditions Of Use Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickTermsAndConditionsOfUseLink() {
+    public BankWirePage clickTermsAndConditionsOfUseLink() {
         termsAndConditionsOfUse.click();
         return this;
     }
@@ -786,9 +769,9 @@ public class ShoppingCartPage {
     /**
      * Click on Tops Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickTops1Link() {
+    public BankWirePage clickTops1Link() {
         tops1.click();
         return this;
     }
@@ -796,9 +779,9 @@ public class ShoppingCartPage {
     /**
      * Click on Tops Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickTops2Link() {
+    public BankWirePage clickTops2Link() {
         tops2.click();
         return this;
     }
@@ -806,9 +789,9 @@ public class ShoppingCartPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickTshirts1Link() {
+    public BankWirePage clickTshirts1Link() {
         tshirts1.click();
         return this;
     }
@@ -816,9 +799,9 @@ public class ShoppingCartPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickTshirts2Link() {
+    public BankWirePage clickTshirts2Link() {
         tshirts2.click();
         return this;
     }
@@ -826,9 +809,9 @@ public class ShoppingCartPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickTshirts3Link() {
+    public BankWirePage clickTshirts3Link() {
         tshirts3.click();
         return this;
     }
@@ -836,9 +819,9 @@ public class ShoppingCartPage {
     /**
      * Click on Twitter Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickTwitterLink() {
+    public BankWirePage clickTwitterLink() {
         twitter.click();
         return this;
     }
@@ -846,9 +829,9 @@ public class ShoppingCartPage {
     /**
      * Click on Women Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickWomen1Link() {
+    public BankWirePage clickWomen1Link() {
         women1.click();
         return this;
     }
@@ -856,9 +839,9 @@ public class ShoppingCartPage {
     /**
      * Click on Women Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickWomen2Link() {
+    public BankWirePage clickWomen2Link() {
         women2.click();
         return this;
     }
@@ -866,9 +849,9 @@ public class ShoppingCartPage {
     /**
      * Click on Youtube Link.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage clickYoutubeLink() {
+    public BankWirePage clickYoutubeLink() {
         youtube.click();
         return this;
     }
@@ -876,11 +859,10 @@ public class ShoppingCartPage {
     /**
      * Fill every fields in the page.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage fill() {
+    public BankWirePage fill() {
         setProductSuccessfullyAddedToYourShoppingTextField();
-        setFadedShortSleeveTshirts5TextField();
         setEcommerceSoftwareByPrestashopTextField2014();
         return this;
     }
@@ -888,9 +870,9 @@ public class ShoppingCartPage {
     /**
      * Fill every fields in the page and submit it to target page.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage fillAndSubmit() {
+    public BankWirePage fillAndSubmit() {
         fill();
         return submit();
     }
@@ -898,56 +880,37 @@ public class ShoppingCartPage {
     /**
      * Set default value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage setEcommerceSoftwareByPrestashopTextField2014() {
+    public BankWirePage setEcommerceSoftwareByPrestashopTextField2014() {
         return setEcommerceSoftwareByPrestashopTextField2014(data.get("ECOMMERCE_SOFTWARE_BY_PRESTASHOP_2014"));
     }
 
     /**
      * Set value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
+    public BankWirePage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
         ecommerceSoftwareByPrestashop2014.sendKeys(ecommerceSoftwareByPrestashopValue2014);
-        return this;
-    }
-
-    /**
-     * Set default value to Faded Short Sleeve Tshirts Text field.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage setFadedShortSleeveTshirts5TextField() {
-        return setFadedShortSleeveTshirts5TextField(data.get("FADED_SHORT_SLEEVE_TSHIRTS_5"));
-    }
-
-    /**
-     * Set value to Faded Short Sleeve Tshirts Text field.
-     *
-     * @return the ShoppingCartPage class instance.
-     */
-    public ShoppingCartPage setFadedShortSleeveTshirts5TextField(String fadedShortSleeveTshirts5Value) {
-        fadedShortSleeveTshirts5.sendKeys(fadedShortSleeveTshirts5Value);
         return this;
     }
 
     /**
      * Set default value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage setProductSuccessfullyAddedToYourShoppingTextField() {
+    public BankWirePage setProductSuccessfullyAddedToYourShoppingTextField() {
         return setProductSuccessfullyAddedToYourShoppingTextField(data.get("PRODUCT_SUCCESSFULLY_ADDED_TO_YOUR_SHOPPING"));
     }
 
     /**
      * Set value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
+    public BankWirePage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
         productSuccessfullyAddedToYourShopping.sendKeys(productSuccessfullyAddedToYourShoppingValue);
         return this;
     }
@@ -955,9 +918,9 @@ public class ShoppingCartPage {
     /**
      * Submit the form to target page.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage submit() {
+    public BankWirePage submit() {
         clickSearchButton();
         return this;
     }
@@ -965,9 +928,9 @@ public class ShoppingCartPage {
     /**
      * Verify that the page loaded completely.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage verifyPageLoaded() {
+    public BankWirePage verifyPageLoaded() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
@@ -979,9 +942,9 @@ public class ShoppingCartPage {
     /**
      * Verify that current page URL matches the expected URL.
      *
-     * @return the ShoppingCartPage class instance.
+     * @return the BankWirePage class instance.
      */
-    public ShoppingCartPage verifyPageUrl() {
+    public BankWirePage verifyPageUrl() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);

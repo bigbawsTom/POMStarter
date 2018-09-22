@@ -1,3 +1,4 @@
+package pageObjects;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CreditSlipsPage {
+public class ShippingPage {
     private Map<String, String> data;
     private WebDriver driver;
     private int timeout = 15;
@@ -17,9 +18,9 @@ public class CreditSlipsPage {
     @CacheLookup
     private WebElement aboutUs;
 
-    @FindBy(css = "#center_column ul.footer_links.clearfix li:nth-of-type(1) a.btn.btn-default.button.button-small")
+    @FindBy(css = "#order_step li:nth-of-type(3) a")
     @CacheLookup
-    private WebElement backToYourAccount;
+    private WebElement address03;
 
     @FindBy(css = "a[title='Best sellers']")
     @CacheLookup
@@ -35,7 +36,7 @@ public class CreditSlipsPage {
 
     @FindBy(css = "a[title='View my shopping cart']")
     @CacheLookup
-    private WebElement cart0ProductProductsEmpty;
+    private WebElement cart1ProductProducts1651;
 
     @FindBy(css = "#block_top_menu ul.sf-menu.clearfix.menu-content.sf-js-enabled.sf-arrows li:nth-of-type(1) ul.submenu-container.clearfix.first-in-line-xs li:nth-of-type(2) ul li:nth-of-type(1) a")
     @CacheLookup
@@ -53,6 +54,12 @@ public class CreditSlipsPage {
     @CacheLookup
     private WebElement checkOut;
 
+    @FindBy(name = "delivery_option[101119]")
+    @CacheLookup
+    private List<WebElement> chooseAShippingOptionForThis;
+
+    private final String chooseAShippingOptionForThisValue = "2,";
+
     @FindBy(css = "a[title='Contact Us']")
     @CacheLookup
     private WebElement contactUs1;
@@ -60,6 +67,10 @@ public class CreditSlipsPage {
     @FindBy(css = "a[title='Contact us']")
     @CacheLookup
     private WebElement contactUs2;
+
+    @FindBy(css = "a.button-exclusive.btn.btn-default")
+    @CacheLookup
+    private WebElement continueShopping;
 
     @FindBy(css = "#block_top_menu ul.sf-menu.clearfix.menu-content.sf-js-enabled.sf-arrows li:nth-of-type(1) ul.submenu-container.clearfix.first-in-line-xs li:nth-of-type(2) a.sf-with-ul")
     @CacheLookup
@@ -97,6 +108,14 @@ public class CreditSlipsPage {
     @CacheLookup
     private WebElement facebook;
 
+    @FindBy(css = "a.cart_block_product_name")
+    @CacheLookup
+    private WebElement faded;
+
+    @FindBy(css = "a.cart-images")
+    @CacheLookup
+    private WebElement fadedShortSleeveTshirts;
+
     @FindBy(css = "a.account")
     @CacheLookup
     private WebElement frodoLastname;
@@ -105,17 +124,13 @@ public class CreditSlipsPage {
     @CacheLookup
     private WebElement googlePlus;
 
-    @FindBy(css = "#center_column ul.footer_links.clearfix li:nth-of-type(2) a.btn.btn-default.button.button-small")
+    @FindBy(id = "cgv")
     @CacheLookup
-    private WebElement home;
-
-    @FindBy(css = "#columns div:nth-of-type(1) a:nth-of-type(2)")
-    @CacheLookup
-    private WebElement myAccount1;
+    private WebElement iAgreeToTheTermsOf;
 
     @FindBy(css = "a[title='Manage my customer account']")
     @CacheLookup
-    private WebElement myAccount2;
+    private WebElement myAccount;
 
     @FindBy(css = "a[title='My addresses']")
     @CacheLookup
@@ -141,25 +156,41 @@ public class CreditSlipsPage {
     @CacheLookup
     private WebElement ok;
 
+    @FindBy(css = "a[title='Product detail']")
+    @CacheLookup
+    private WebElement orangeS;
+
     @FindBy(css = "a[title='Our stores']")
     @CacheLookup
     private WebElement ourStores;
 
-    private final String pageLoadedText = "Credit slips you have received after canceled orders";
+    private final String pageLoadedText = "I agree to the terms of service and will adhere to them unconditionally";
 
-    private final String pageUrl = "/index.php?controller=order-slip";
+    private final String pageUrl = "/index.php?controller=order";
 
     @FindBy(css = "a.btn.btn-default.button.button-medium")
     @CacheLookup
-    private WebElement proceedToCheckout;
+    private WebElement proceedToCheckout1;
+
+    @FindBy(name = "processCarrier")
+    @CacheLookup
+    private WebElement proceedToCheckout2;
 
     @FindBy(id = "search_query_top")
     @CacheLookup
     private WebElement productSuccessfullyAddedToYourShopping;
 
+    @FindBy(css = "a.iframe")
+    @CacheLookup
+    private WebElement readTheTermsOfService;
+
     @FindBy(name = "submit_search")
     @CacheLookup
     private WebElement search;
+
+    @FindBy(css = "#order_step li:nth-of-type(2) a")
+    @CacheLookup
+    private WebElement signIn02;
 
     @FindBy(css = "a.logout")
     @CacheLookup
@@ -176,6 +207,10 @@ public class CreditSlipsPage {
     @FindBy(css = "a[title='Specials']")
     @CacheLookup
     private WebElement specials;
+
+    @FindBy(css = "#order_step li:nth-of-type(1) a")
+    @CacheLookup
+    private WebElement summary01;
 
     @FindBy(css = "#block_top_menu ul.sf-menu.clearfix.menu-content.sf-js-enabled.sf-arrows li:nth-of-type(1) ul.submenu-container.clearfix.first-in-line-xs li:nth-of-type(2) ul li:nth-of-type(3) a")
     @CacheLookup
@@ -233,20 +268,20 @@ public class CreditSlipsPage {
     @CacheLookup
     private WebElement youtube;
 
-    public CreditSlipsPage() {
+    public ShippingPage() {
     }
 
-    public CreditSlipsPage(WebDriver driver) {
+    public ShippingPage(WebDriver driver) {
         this();
         this.driver = driver;
     }
 
-    public CreditSlipsPage(WebDriver driver, Map<String, String> data) {
+    public ShippingPage(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
     }
 
-    public CreditSlipsPage(WebDriver driver, Map<String, String> data, int timeout) {
+    public ShippingPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
     }
@@ -254,29 +289,29 @@ public class CreditSlipsPage {
     /**
      * Click on About Us Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickAboutUsLink() {
+    public ShippingPage clickAboutUsLink() {
         aboutUs.click();
         return this;
     }
 
     /**
-     * Click on Back To Your Account Link.
+     * Click on 03. Address Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickBackToYourAccountLink() {
-        backToYourAccount.click();
+    public ShippingPage clickAddressLink03() {
+        address03.click();
         return this;
     }
 
     /**
      * Click on Best Sellers Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickBestSellersLink() {
+    public ShippingPage clickBestSellersLink() {
         bestSellers.click();
         return this;
     }
@@ -284,9 +319,9 @@ public class CreditSlipsPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickBlouses1Link() {
+    public ShippingPage clickBlouses1Link() {
         blouses1.click();
         return this;
     }
@@ -294,29 +329,29 @@ public class CreditSlipsPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickBlouses2Link() {
+    public ShippingPage clickBlouses2Link() {
         blouses2.click();
         return this;
     }
 
     /**
-     * Click on Cart 0 Product Products Empty Link.
+     * Click on Cart 1 Product Products 16.51 Empty Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickCart0ProductProductsEmptyLink() {
-        cart0ProductProductsEmpty.click();
+    public ShippingPage clickCart1ProductProducts1651Link() {
+        cart1ProductProducts1651.click();
         return this;
     }
 
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickCasualDresses1Link() {
+    public ShippingPage clickCasualDresses1Link() {
         casualDresses1.click();
         return this;
     }
@@ -324,9 +359,9 @@ public class CreditSlipsPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickCasualDresses2Link() {
+    public ShippingPage clickCasualDresses2Link() {
         casualDresses2.click();
         return this;
     }
@@ -334,9 +369,9 @@ public class CreditSlipsPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickCasualDresses3Link() {
+    public ShippingPage clickCasualDresses3Link() {
         casualDresses3.click();
         return this;
     }
@@ -344,9 +379,9 @@ public class CreditSlipsPage {
     /**
      * Click on Check Out Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickCheckOutLink() {
+    public ShippingPage clickCheckOutLink() {
         checkOut.click();
         return this;
     }
@@ -354,9 +389,9 @@ public class CreditSlipsPage {
     /**
      * Click on Contact Us Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickContactUs1Link() {
+    public ShippingPage clickContactUs1Link() {
         contactUs1.click();
         return this;
     }
@@ -364,19 +399,29 @@ public class CreditSlipsPage {
     /**
      * Click on Contact Us Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickContactUs2Link() {
+    public ShippingPage clickContactUs2Link() {
         contactUs2.click();
+        return this;
+    }
+
+    /**
+     * Click on Continue Shopping Link.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickContinueShoppingLink() {
+        continueShopping.click();
         return this;
     }
 
     /**
      * Click on Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickDresses1Link() {
+    public ShippingPage clickDresses1Link() {
         dresses1.click();
         return this;
     }
@@ -384,9 +429,9 @@ public class CreditSlipsPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickDresses2Link() {
+    public ShippingPage clickDresses2Link() {
         dresses2.click();
         return this;
     }
@@ -394,9 +439,9 @@ public class CreditSlipsPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickDresses3Link() {
+    public ShippingPage clickDresses3Link() {
         dresses3.click();
         return this;
     }
@@ -404,9 +449,9 @@ public class CreditSlipsPage {
     /**
      * Click on Ecommerce Software By Prestashop Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickEcommerceSoftwareByPrestashopLink() {
+    public ShippingPage clickEcommerceSoftwareByPrestashopLink() {
         ecommerceSoftwareByPrestashop.click();
         return this;
     }
@@ -414,9 +459,9 @@ public class CreditSlipsPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickEveningDresses1Link() {
+    public ShippingPage clickEveningDresses1Link() {
         eveningDresses1.click();
         return this;
     }
@@ -424,9 +469,9 @@ public class CreditSlipsPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickEveningDresses2Link() {
+    public ShippingPage clickEveningDresses2Link() {
         eveningDresses2.click();
         return this;
     }
@@ -434,9 +479,9 @@ public class CreditSlipsPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickEveningDresses3Link() {
+    public ShippingPage clickEveningDresses3Link() {
         eveningDresses3.click();
         return this;
     }
@@ -444,19 +489,39 @@ public class CreditSlipsPage {
     /**
      * Click on Facebook Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickFacebookLink() {
+    public ShippingPage clickFacebookLink() {
         facebook.click();
+        return this;
+    }
+
+    /**
+     * Click on Faded... Link.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickFadedLink() {
+        faded.click();
+        return this;
+    }
+
+    /**
+     * Click on Faded Short Sleeve Tshirts Link.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickFadedShortSleeveTshirtsLink() {
+        fadedShortSleeveTshirts.click();
         return this;
     }
 
     /**
      * Click on Frodo Lastname Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickFrodoLastnameLink() {
+    public ShippingPage clickFrodoLastnameLink() {
         frodoLastname.click();
         return this;
     }
@@ -464,49 +529,29 @@ public class CreditSlipsPage {
     /**
      * Click on Google Plus Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickGooglePlusLink() {
+    public ShippingPage clickGooglePlusLink() {
         googlePlus.click();
         return this;
     }
 
     /**
-     * Click on Home Link.
-     *
-     * @return the CreditSlipsPage class instance.
-     */
-    public CreditSlipsPage clickHomeLink() {
-        home.click();
-        return this;
-    }
-
-    /**
      * Click on My Account Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickMyAccount1Link() {
-        myAccount1.click();
-        return this;
-    }
-
-    /**
-     * Click on My Account Link.
-     *
-     * @return the CreditSlipsPage class instance.
-     */
-    public CreditSlipsPage clickMyAccount2Link() {
-        myAccount2.click();
+    public ShippingPage clickMyAccountLink() {
+        myAccount.click();
         return this;
     }
 
     /**
      * Click on My Addresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickMyAddressesLink() {
+    public ShippingPage clickMyAddressesLink() {
         myAddresses.click();
         return this;
     }
@@ -514,9 +559,9 @@ public class CreditSlipsPage {
     /**
      * Click on My Credit Slips Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickMyCreditSlipsLink() {
+    public ShippingPage clickMyCreditSlipsLink() {
         myCreditSlips.click();
         return this;
     }
@@ -524,9 +569,9 @@ public class CreditSlipsPage {
     /**
      * Click on My Orders Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickMyOrdersLink() {
+    public ShippingPage clickMyOrdersLink() {
         myOrders.click();
         return this;
     }
@@ -534,9 +579,9 @@ public class CreditSlipsPage {
     /**
      * Click on My Personal Info Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickMyPersonalInfoLink() {
+    public ShippingPage clickMyPersonalInfoLink() {
         myPersonalInfo.click();
         return this;
     }
@@ -544,9 +589,9 @@ public class CreditSlipsPage {
     /**
      * Click on New Products Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickNewProductsLink() {
+    public ShippingPage clickNewProductsLink() {
         newProducts.click();
         return this;
     }
@@ -554,49 +599,89 @@ public class CreditSlipsPage {
     /**
      * Click on Ok Button.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickOkButton() {
+    public ShippingPage clickOkButton() {
         ok.click();
+        return this;
+    }
+
+    /**
+     * Click on Orange S Link.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickOrangeSLink() {
+        orangeS.click();
         return this;
     }
 
     /**
      * Click on Our Stores Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickOurStoresLink() {
+    public ShippingPage clickOurStoresLink() {
         ourStores.click();
         return this;
     }
 
     /**
-     * Click on Proceed To Checkout Link.
+     * Click on Proceed To Checkout Button.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickProceedToCheckoutLink() {
-        proceedToCheckout.click();
+    public ShippingPage clickProceedToCheckout1Button() {
+        proceedToCheckout1.click();
+        return this;
+    }
+
+    /**
+     * Click on Proceed To Checkout Button.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickProceedToCheckout2Button() {
+        proceedToCheckout2.click();
+        return this;
+    }
+
+    /**
+     * Click on Read The Terms Of Service Link.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickReadTheTermsOfServiceLink() {
+        readTheTermsOfService.click();
         return this;
     }
 
     /**
      * Click on Search Button.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSearchButton() {
+    public ShippingPage clickSearchButton() {
         search.click();
+        return this;
+    }
+
+    /**
+     * Click on 02. Sign In Link.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickSignInLink02() {
+        signIn02.click();
         return this;
     }
 
     /**
      * Click on Sign Out Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSignOut1Link() {
+    public ShippingPage clickSignOut1Link() {
         signOut1.click();
         return this;
     }
@@ -604,9 +689,9 @@ public class CreditSlipsPage {
     /**
      * Click on Sign Out Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSignOut2Link() {
+    public ShippingPage clickSignOut2Link() {
         signOut2.click();
         return this;
     }
@@ -614,9 +699,9 @@ public class CreditSlipsPage {
     /**
      * Click on Sitemap Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSitemapLink() {
+    public ShippingPage clickSitemapLink() {
         sitemap.click();
         return this;
     }
@@ -624,19 +709,29 @@ public class CreditSlipsPage {
     /**
      * Click on Specials Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSpecialsLink() {
+    public ShippingPage clickSpecialsLink() {
         specials.click();
+        return this;
+    }
+
+    /**
+     * Click on 01. Summary Link.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage clickSummaryLink01() {
+        summary01.click();
         return this;
     }
 
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSummerDresses1Link() {
+    public ShippingPage clickSummerDresses1Link() {
         summerDresses1.click();
         return this;
     }
@@ -644,9 +739,9 @@ public class CreditSlipsPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSummerDresses2Link() {
+    public ShippingPage clickSummerDresses2Link() {
         summerDresses2.click();
         return this;
     }
@@ -654,9 +749,9 @@ public class CreditSlipsPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSummerDresses3Link() {
+    public ShippingPage clickSummerDresses3Link() {
         summerDresses3.click();
         return this;
     }
@@ -664,9 +759,9 @@ public class CreditSlipsPage {
     /**
      * Click on Supportseleniumframework.com Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickSupportseleniumframeworkComLink() {
+    public ShippingPage clickSupportseleniumframeworkComLink() {
         supportseleniumframeworkCom.click();
         return this;
     }
@@ -674,9 +769,9 @@ public class CreditSlipsPage {
     /**
      * Click on Terms And Conditions Of Use Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickTermsAndConditionsOfUseLink() {
+    public ShippingPage clickTermsAndConditionsOfUseLink() {
         termsAndConditionsOfUse.click();
         return this;
     }
@@ -684,9 +779,9 @@ public class CreditSlipsPage {
     /**
      * Click on Tops Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickTops1Link() {
+    public ShippingPage clickTops1Link() {
         tops1.click();
         return this;
     }
@@ -694,9 +789,9 @@ public class CreditSlipsPage {
     /**
      * Click on Tops Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickTops2Link() {
+    public ShippingPage clickTops2Link() {
         tops2.click();
         return this;
     }
@@ -704,9 +799,9 @@ public class CreditSlipsPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickTshirts1Link() {
+    public ShippingPage clickTshirts1Link() {
         tshirts1.click();
         return this;
     }
@@ -714,9 +809,9 @@ public class CreditSlipsPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickTshirts2Link() {
+    public ShippingPage clickTshirts2Link() {
         tshirts2.click();
         return this;
     }
@@ -724,9 +819,9 @@ public class CreditSlipsPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickTshirts3Link() {
+    public ShippingPage clickTshirts3Link() {
         tshirts3.click();
         return this;
     }
@@ -734,9 +829,9 @@ public class CreditSlipsPage {
     /**
      * Click on Twitter Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickTwitterLink() {
+    public ShippingPage clickTwitterLink() {
         twitter.click();
         return this;
     }
@@ -744,9 +839,9 @@ public class CreditSlipsPage {
     /**
      * Click on Women Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickWomen1Link() {
+    public ShippingPage clickWomen1Link() {
         women1.click();
         return this;
     }
@@ -754,9 +849,9 @@ public class CreditSlipsPage {
     /**
      * Click on Women Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickWomen2Link() {
+    public ShippingPage clickWomen2Link() {
         women2.click();
         return this;
     }
@@ -764,9 +859,9 @@ public class CreditSlipsPage {
     /**
      * Click on Youtube Link.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage clickYoutubeLink() {
+    public ShippingPage clickYoutubeLink() {
         youtube.click();
         return this;
     }
@@ -774,10 +869,12 @@ public class CreditSlipsPage {
     /**
      * Fill every fields in the page.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage fill() {
+    public ShippingPage fill() {
         setProductSuccessfullyAddedToYourShoppingTextField();
+        setChooseAShippingOptionForThisRadioButtonField();
+        setIAgreeToTheTermsOfCheckboxField();
         setEcommerceSoftwareByPrestashopTextField2014();
         return this;
     }
@@ -785,47 +882,76 @@ public class CreditSlipsPage {
     /**
      * Fill every fields in the page and submit it to target page.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage fillAndSubmit() {
+    public ShippingPage fillAndSubmit() {
         fill();
         return submit();
     }
 
     /**
+     * Set default value to Choose A Shipping Option For This Address Test Radio Button field.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage setChooseAShippingOptionForThisRadioButtonField() {
+        for (WebElement el : chooseAShippingOptionForThis) {
+            if (el.getAttribute("value").equals(chooseAShippingOptionForThisValue)) {
+                if (!el.isSelected()) {
+                    el.click();
+                }
+                break;
+            }
+        }
+        return this;
+    }
+
+    /**
      * Set default value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage setEcommerceSoftwareByPrestashopTextField2014() {
+    public ShippingPage setEcommerceSoftwareByPrestashopTextField2014() {
         return setEcommerceSoftwareByPrestashopTextField2014(data.get("ECOMMERCE_SOFTWARE_BY_PRESTASHOP_2014"));
     }
 
     /**
      * Set value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
+    public ShippingPage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
         ecommerceSoftwareByPrestashop2014.sendKeys(ecommerceSoftwareByPrestashopValue2014);
+        return this;
+    }
+
+    /**
+     * Set I Agree To The Terms Of Service And Will Adhere To Them Unconditionally. Checkbox field.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage setIAgreeToTheTermsOfCheckboxField() {
+        if (!iAgreeToTheTermsOf.isSelected()) {
+            iAgreeToTheTermsOf.click();
+        }
         return this;
     }
 
     /**
      * Set default value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage setProductSuccessfullyAddedToYourShoppingTextField() {
+    public ShippingPage setProductSuccessfullyAddedToYourShoppingTextField() {
         return setProductSuccessfullyAddedToYourShoppingTextField(data.get("PRODUCT_SUCCESSFULLY_ADDED_TO_YOUR_SHOPPING"));
     }
 
     /**
      * Set value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
+    public ShippingPage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
         productSuccessfullyAddedToYourShopping.sendKeys(productSuccessfullyAddedToYourShoppingValue);
         return this;
     }
@@ -833,19 +959,31 @@ public class CreditSlipsPage {
     /**
      * Submit the form to target page.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage submit() {
+    public ShippingPage submit() {
         clickSearchButton();
+        return this;
+    }
+
+    /**
+     * Unset I Agree To The Terms Of Service And Will Adhere To Them Unconditionally. Checkbox field.
+     *
+     * @return the ShippingPage class instance.
+     */
+    public ShippingPage unsetIAgreeToTheTermsOfCheckboxField() {
+        if (iAgreeToTheTermsOf.isSelected()) {
+            iAgreeToTheTermsOf.click();
+        }
         return this;
     }
 
     /**
      * Verify that the page loaded completely.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage verifyPageLoaded() {
+    public ShippingPage verifyPageLoaded() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
@@ -857,9 +995,9 @@ public class CreditSlipsPage {
     /**
      * Verify that current page URL matches the expected URL.
      *
-     * @return the CreditSlipsPage class instance.
+     * @return the ShippingPage class instance.
      */
-    public CreditSlipsPage verifyPageUrl() {
+    public ShippingPage verifyPageUrl() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);

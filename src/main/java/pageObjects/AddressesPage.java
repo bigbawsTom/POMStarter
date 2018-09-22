@@ -1,3 +1,4 @@
+package pageObjects;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ShippingPage {
+public class AddressesPage {
     private Map<String, String> data;
     private WebDriver driver;
     private int timeout = 15;
@@ -17,9 +18,9 @@ public class ShippingPage {
     @CacheLookup
     private WebElement aboutUs;
 
-    @FindBy(css = "#order_step li:nth-of-type(3) a")
+    @FindBy(css = "a[title='Add']")
     @CacheLookup
-    private WebElement address03;
+    private WebElement addANewAddress;
 
     @FindBy(css = "a[title='Best sellers']")
     @CacheLookup
@@ -53,11 +54,13 @@ public class ShippingPage {
     @CacheLookup
     private WebElement checkOut;
 
-    @FindBy(name = "delivery_option[101119]")
+    @FindBy(id = "id_address_invoice")
     @CacheLookup
-    private List<WebElement> chooseAShippingOptionForThis;
+    private WebElement chooseABillingAddress;
 
-    private final String chooseAShippingOptionForThisValue = "2,";
+    @FindBy(id = "id_address_delivery")
+    @CacheLookup
+    private WebElement chooseADeliveryAddress;
 
     @FindBy(css = "a[title='Contact Us']")
     @CacheLookup
@@ -123,9 +126,9 @@ public class ShippingPage {
     @CacheLookup
     private WebElement googlePlus;
 
-    @FindBy(id = "cgv")
+    @FindBy(name = "message")
     @CacheLookup
-    private WebElement iAgreeToTheTermsOf;
+    private WebElement ifYouWouldLikeToAdd;
 
     @FindBy(css = "a[title='Manage my customer account']")
     @CacheLookup
@@ -163,15 +166,15 @@ public class ShippingPage {
     @CacheLookup
     private WebElement ourStores;
 
-    private final String pageLoadedText = "I agree to the terms of service and will adhere to them unconditionally";
+    private final String pageLoadedText = "Use the delivery address as the billing address";
 
-    private final String pageUrl = "/index.php?controller=order";
+    private final String pageUrl = "/index.php?controller=order&step=1";
 
     @FindBy(css = "a.btn.btn-default.button.button-medium")
     @CacheLookup
     private WebElement proceedToCheckout1;
 
-    @FindBy(name = "processCarrier")
+    @FindBy(name = "processAddress")
     @CacheLookup
     private WebElement proceedToCheckout2;
 
@@ -179,15 +182,11 @@ public class ShippingPage {
     @CacheLookup
     private WebElement productSuccessfullyAddedToYourShopping;
 
-    @FindBy(css = "a.iframe")
-    @CacheLookup
-    private WebElement readTheTermsOfService;
-
     @FindBy(name = "submit_search")
     @CacheLookup
     private WebElement search;
 
-    @FindBy(css = "#order_step li:nth-of-type(2) a")
+    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=order&step=1&multi-shipping=']")
     @CacheLookup
     private WebElement signIn02;
 
@@ -255,6 +254,18 @@ public class ShippingPage {
     @CacheLookup
     private WebElement twitter;
 
+    @FindBy(css = "#address_delivery li:nth-of-type(9) a.button.button-small.btn.btn-default")
+    @CacheLookup
+    private WebElement update1;
+
+    @FindBy(css = "#address_invoice li:nth-of-type(9) a.button.button-small.btn.btn-default")
+    @CacheLookup
+    private WebElement update2;
+
+    @FindBy(id = "addressesAreEquals")
+    @CacheLookup
+    private WebElement useTheDeliveryAddressAsThe;
+
     @FindBy(css = "a[title='Women']")
     @CacheLookup
     private WebElement women1;
@@ -267,20 +278,20 @@ public class ShippingPage {
     @CacheLookup
     private WebElement youtube;
 
-    public ShippingPage() {
+    public AddressesPage() {
     }
 
-    public ShippingPage(WebDriver driver) {
+    public AddressesPage(WebDriver driver) {
         this();
         this.driver = driver;
     }
 
-    public ShippingPage(WebDriver driver, Map<String, String> data) {
+    public AddressesPage(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
     }
 
-    public ShippingPage(WebDriver driver, Map<String, String> data, int timeout) {
+    public AddressesPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
     }
@@ -288,29 +299,29 @@ public class ShippingPage {
     /**
      * Click on About Us Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickAboutUsLink() {
+    public AddressesPage clickAboutUsLink() {
         aboutUs.click();
         return this;
     }
 
     /**
-     * Click on 03. Address Link.
+     * Click on Add A New Address Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickAddressLink03() {
-        address03.click();
+    public AddressesPage clickAddANewAddressLink() {
+        addANewAddress.click();
         return this;
     }
 
     /**
      * Click on Best Sellers Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickBestSellersLink() {
+    public AddressesPage clickBestSellersLink() {
         bestSellers.click();
         return this;
     }
@@ -318,9 +329,9 @@ public class ShippingPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickBlouses1Link() {
+    public AddressesPage clickBlouses1Link() {
         blouses1.click();
         return this;
     }
@@ -328,9 +339,9 @@ public class ShippingPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickBlouses2Link() {
+    public AddressesPage clickBlouses2Link() {
         blouses2.click();
         return this;
     }
@@ -338,9 +349,9 @@ public class ShippingPage {
     /**
      * Click on Cart 1 Product Products 16.51 Empty Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickCart1ProductProducts1651Link() {
+    public AddressesPage clickCart1ProductProducts1651Link() {
         cart1ProductProducts1651.click();
         return this;
     }
@@ -348,9 +359,9 @@ public class ShippingPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickCasualDresses1Link() {
+    public AddressesPage clickCasualDresses1Link() {
         casualDresses1.click();
         return this;
     }
@@ -358,9 +369,9 @@ public class ShippingPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickCasualDresses2Link() {
+    public AddressesPage clickCasualDresses2Link() {
         casualDresses2.click();
         return this;
     }
@@ -368,9 +379,9 @@ public class ShippingPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickCasualDresses3Link() {
+    public AddressesPage clickCasualDresses3Link() {
         casualDresses3.click();
         return this;
     }
@@ -378,9 +389,9 @@ public class ShippingPage {
     /**
      * Click on Check Out Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickCheckOutLink() {
+    public AddressesPage clickCheckOutLink() {
         checkOut.click();
         return this;
     }
@@ -388,9 +399,9 @@ public class ShippingPage {
     /**
      * Click on Contact Us Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickContactUs1Link() {
+    public AddressesPage clickContactUs1Link() {
         contactUs1.click();
         return this;
     }
@@ -398,9 +409,9 @@ public class ShippingPage {
     /**
      * Click on Contact Us Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickContactUs2Link() {
+    public AddressesPage clickContactUs2Link() {
         contactUs2.click();
         return this;
     }
@@ -408,9 +419,9 @@ public class ShippingPage {
     /**
      * Click on Continue Shopping Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickContinueShoppingLink() {
+    public AddressesPage clickContinueShoppingLink() {
         continueShopping.click();
         return this;
     }
@@ -418,9 +429,9 @@ public class ShippingPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickDresses1Link() {
+    public AddressesPage clickDresses1Link() {
         dresses1.click();
         return this;
     }
@@ -428,9 +439,9 @@ public class ShippingPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickDresses2Link() {
+    public AddressesPage clickDresses2Link() {
         dresses2.click();
         return this;
     }
@@ -438,9 +449,9 @@ public class ShippingPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickDresses3Link() {
+    public AddressesPage clickDresses3Link() {
         dresses3.click();
         return this;
     }
@@ -448,9 +459,9 @@ public class ShippingPage {
     /**
      * Click on Ecommerce Software By Prestashop Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickEcommerceSoftwareByPrestashopLink() {
+    public AddressesPage clickEcommerceSoftwareByPrestashopLink() {
         ecommerceSoftwareByPrestashop.click();
         return this;
     }
@@ -458,9 +469,9 @@ public class ShippingPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickEveningDresses1Link() {
+    public AddressesPage clickEveningDresses1Link() {
         eveningDresses1.click();
         return this;
     }
@@ -468,9 +479,9 @@ public class ShippingPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickEveningDresses2Link() {
+    public AddressesPage clickEveningDresses2Link() {
         eveningDresses2.click();
         return this;
     }
@@ -478,9 +489,9 @@ public class ShippingPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickEveningDresses3Link() {
+    public AddressesPage clickEveningDresses3Link() {
         eveningDresses3.click();
         return this;
     }
@@ -488,9 +499,9 @@ public class ShippingPage {
     /**
      * Click on Facebook Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickFacebookLink() {
+    public AddressesPage clickFacebookLink() {
         facebook.click();
         return this;
     }
@@ -498,9 +509,9 @@ public class ShippingPage {
     /**
      * Click on Faded... Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickFadedLink() {
+    public AddressesPage clickFadedLink() {
         faded.click();
         return this;
     }
@@ -508,9 +519,9 @@ public class ShippingPage {
     /**
      * Click on Faded Short Sleeve Tshirts Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickFadedShortSleeveTshirtsLink() {
+    public AddressesPage clickFadedShortSleeveTshirtsLink() {
         fadedShortSleeveTshirts.click();
         return this;
     }
@@ -518,9 +529,9 @@ public class ShippingPage {
     /**
      * Click on Frodo Lastname Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickFrodoLastnameLink() {
+    public AddressesPage clickFrodoLastnameLink() {
         frodoLastname.click();
         return this;
     }
@@ -528,9 +539,9 @@ public class ShippingPage {
     /**
      * Click on Google Plus Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickGooglePlusLink() {
+    public AddressesPage clickGooglePlusLink() {
         googlePlus.click();
         return this;
     }
@@ -538,9 +549,9 @@ public class ShippingPage {
     /**
      * Click on My Account Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickMyAccountLink() {
+    public AddressesPage clickMyAccountLink() {
         myAccount.click();
         return this;
     }
@@ -548,9 +559,9 @@ public class ShippingPage {
     /**
      * Click on My Addresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickMyAddressesLink() {
+    public AddressesPage clickMyAddressesLink() {
         myAddresses.click();
         return this;
     }
@@ -558,9 +569,9 @@ public class ShippingPage {
     /**
      * Click on My Credit Slips Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickMyCreditSlipsLink() {
+    public AddressesPage clickMyCreditSlipsLink() {
         myCreditSlips.click();
         return this;
     }
@@ -568,9 +579,9 @@ public class ShippingPage {
     /**
      * Click on My Orders Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickMyOrdersLink() {
+    public AddressesPage clickMyOrdersLink() {
         myOrders.click();
         return this;
     }
@@ -578,9 +589,9 @@ public class ShippingPage {
     /**
      * Click on My Personal Info Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickMyPersonalInfoLink() {
+    public AddressesPage clickMyPersonalInfoLink() {
         myPersonalInfo.click();
         return this;
     }
@@ -588,9 +599,9 @@ public class ShippingPage {
     /**
      * Click on New Products Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickNewProductsLink() {
+    public AddressesPage clickNewProductsLink() {
         newProducts.click();
         return this;
     }
@@ -598,9 +609,9 @@ public class ShippingPage {
     /**
      * Click on Ok Button.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickOkButton() {
+    public AddressesPage clickOkButton() {
         ok.click();
         return this;
     }
@@ -608,9 +619,9 @@ public class ShippingPage {
     /**
      * Click on Orange S Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickOrangeSLink() {
+    public AddressesPage clickOrangeSLink() {
         orangeS.click();
         return this;
     }
@@ -618,9 +629,9 @@ public class ShippingPage {
     /**
      * Click on Our Stores Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickOurStoresLink() {
+    public AddressesPage clickOurStoresLink() {
         ourStores.click();
         return this;
     }
@@ -628,9 +639,9 @@ public class ShippingPage {
     /**
      * Click on Proceed To Checkout Button.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickProceedToCheckout1Button() {
+    public AddressesPage clickProceedToCheckout1Button() {
         proceedToCheckout1.click();
         return this;
     }
@@ -638,29 +649,19 @@ public class ShippingPage {
     /**
      * Click on Proceed To Checkout Button.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickProceedToCheckout2Button() {
+    public AddressesPage clickProceedToCheckout2Button() {
         proceedToCheckout2.click();
-        return this;
-    }
-
-    /**
-     * Click on Read The Terms Of Service Link.
-     *
-     * @return the ShippingPage class instance.
-     */
-    public ShippingPage clickReadTheTermsOfServiceLink() {
-        readTheTermsOfService.click();
         return this;
     }
 
     /**
      * Click on Search Button.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSearchButton() {
+    public AddressesPage clickSearchButton() {
         search.click();
         return this;
     }
@@ -668,9 +669,9 @@ public class ShippingPage {
     /**
      * Click on 02. Sign In Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSignInLink02() {
+    public AddressesPage clickSignInLink02() {
         signIn02.click();
         return this;
     }
@@ -678,9 +679,9 @@ public class ShippingPage {
     /**
      * Click on Sign Out Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSignOut1Link() {
+    public AddressesPage clickSignOut1Link() {
         signOut1.click();
         return this;
     }
@@ -688,9 +689,9 @@ public class ShippingPage {
     /**
      * Click on Sign Out Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSignOut2Link() {
+    public AddressesPage clickSignOut2Link() {
         signOut2.click();
         return this;
     }
@@ -698,9 +699,9 @@ public class ShippingPage {
     /**
      * Click on Sitemap Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSitemapLink() {
+    public AddressesPage clickSitemapLink() {
         sitemap.click();
         return this;
     }
@@ -708,9 +709,9 @@ public class ShippingPage {
     /**
      * Click on Specials Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSpecialsLink() {
+    public AddressesPage clickSpecialsLink() {
         specials.click();
         return this;
     }
@@ -718,9 +719,9 @@ public class ShippingPage {
     /**
      * Click on 01. Summary Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSummaryLink01() {
+    public AddressesPage clickSummaryLink01() {
         summary01.click();
         return this;
     }
@@ -728,9 +729,9 @@ public class ShippingPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSummerDresses1Link() {
+    public AddressesPage clickSummerDresses1Link() {
         summerDresses1.click();
         return this;
     }
@@ -738,9 +739,9 @@ public class ShippingPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSummerDresses2Link() {
+    public AddressesPage clickSummerDresses2Link() {
         summerDresses2.click();
         return this;
     }
@@ -748,9 +749,9 @@ public class ShippingPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSummerDresses3Link() {
+    public AddressesPage clickSummerDresses3Link() {
         summerDresses3.click();
         return this;
     }
@@ -758,9 +759,9 @@ public class ShippingPage {
     /**
      * Click on Supportseleniumframework.com Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickSupportseleniumframeworkComLink() {
+    public AddressesPage clickSupportseleniumframeworkComLink() {
         supportseleniumframeworkCom.click();
         return this;
     }
@@ -768,9 +769,9 @@ public class ShippingPage {
     /**
      * Click on Terms And Conditions Of Use Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickTermsAndConditionsOfUseLink() {
+    public AddressesPage clickTermsAndConditionsOfUseLink() {
         termsAndConditionsOfUse.click();
         return this;
     }
@@ -778,9 +779,9 @@ public class ShippingPage {
     /**
      * Click on Tops Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickTops1Link() {
+    public AddressesPage clickTops1Link() {
         tops1.click();
         return this;
     }
@@ -788,9 +789,9 @@ public class ShippingPage {
     /**
      * Click on Tops Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickTops2Link() {
+    public AddressesPage clickTops2Link() {
         tops2.click();
         return this;
     }
@@ -798,9 +799,9 @@ public class ShippingPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickTshirts1Link() {
+    public AddressesPage clickTshirts1Link() {
         tshirts1.click();
         return this;
     }
@@ -808,9 +809,9 @@ public class ShippingPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickTshirts2Link() {
+    public AddressesPage clickTshirts2Link() {
         tshirts2.click();
         return this;
     }
@@ -818,9 +819,9 @@ public class ShippingPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickTshirts3Link() {
+    public AddressesPage clickTshirts3Link() {
         tshirts3.click();
         return this;
     }
@@ -828,19 +829,39 @@ public class ShippingPage {
     /**
      * Click on Twitter Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickTwitterLink() {
+    public AddressesPage clickTwitterLink() {
         twitter.click();
+        return this;
+    }
+
+    /**
+     * Click on Update Link.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage clickUpdate1Link() {
+        update1.click();
+        return this;
+    }
+
+    /**
+     * Click on Update Link.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage clickUpdate2Link() {
+        update2.click();
         return this;
     }
 
     /**
      * Click on Women Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickWomen1Link() {
+    public AddressesPage clickWomen1Link() {
         women1.click();
         return this;
     }
@@ -848,9 +869,9 @@ public class ShippingPage {
     /**
      * Click on Women Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickWomen2Link() {
+    public AddressesPage clickWomen2Link() {
         women2.click();
         return this;
     }
@@ -858,9 +879,9 @@ public class ShippingPage {
     /**
      * Click on Youtube Link.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage clickYoutubeLink() {
+    public AddressesPage clickYoutubeLink() {
         youtube.click();
         return this;
     }
@@ -868,12 +889,14 @@ public class ShippingPage {
     /**
      * Fill every fields in the page.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage fill() {
+    public AddressesPage fill() {
         setProductSuccessfullyAddedToYourShoppingTextField();
-        setChooseAShippingOptionForThisRadioButtonField();
-        setIAgreeToTheTermsOfCheckboxField();
+        setChooseADeliveryAddressDropDownListField();
+        setUseTheDeliveryAddressAsTheCheckboxField();
+        setChooseABillingAddressDropDownListField();
+        setIfYouWouldLikeToAddTextareaField();
         setEcommerceSoftwareByPrestashopTextField2014();
         return this;
     }
@@ -881,98 +904,176 @@ public class ShippingPage {
     /**
      * Fill every fields in the page and submit it to target page.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage fillAndSubmit() {
+    public AddressesPage fillAndSubmit() {
         fill();
         return submit();
     }
 
     /**
-     * Set default value to Choose A Shipping Option For This Address Test Radio Button field.
+     * Set default value to Choose A Billing Address Drop Down List field.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage setChooseAShippingOptionForThisRadioButtonField() {
-        for (WebElement el : chooseAShippingOptionForThis) {
-            if (el.getAttribute("value").equals(chooseAShippingOptionForThisValue)) {
-                if (!el.isSelected()) {
-                    el.click();
-                }
-                break;
-            }
-        }
+    public AddressesPage setChooseABillingAddressDropDownListField() {
+        return setChooseABillingAddressDropDownListField(data.get("CHOOSE_A_BILLING_ADDRESS"));
+    }
+
+    /**
+     * Set value to Choose A Billing Address Drop Down List field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage setChooseABillingAddressDropDownListField(String chooseABillingAddressValue) {
+        new Select(chooseABillingAddress).selectByVisibleText(chooseABillingAddressValue);
+        return this;
+    }
+
+    /**
+     * Set default value to Choose A Delivery Address Drop Down List field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage setChooseADeliveryAddressDropDownListField() {
+        return setChooseADeliveryAddressDropDownListField(data.get("CHOOSE_A_DELIVERY_ADDRESS"));
+    }
+
+    /**
+     * Set value to Choose A Delivery Address Drop Down List field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage setChooseADeliveryAddressDropDownListField(String chooseADeliveryAddressValue) {
+        new Select(chooseADeliveryAddress).selectByVisibleText(chooseADeliveryAddressValue);
         return this;
     }
 
     /**
      * Set default value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage setEcommerceSoftwareByPrestashopTextField2014() {
+    public AddressesPage setEcommerceSoftwareByPrestashopTextField2014() {
         return setEcommerceSoftwareByPrestashopTextField2014(data.get("ECOMMERCE_SOFTWARE_BY_PRESTASHOP_2014"));
     }
 
     /**
      * Set value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
+    public AddressesPage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
         ecommerceSoftwareByPrestashop2014.sendKeys(ecommerceSoftwareByPrestashopValue2014);
         return this;
     }
 
     /**
-     * Set I Agree To The Terms Of Service And Will Adhere To Them Unconditionally. Checkbox field.
+     * Set default value to If You Would Like To Add A Comment About Your Order Please Write It In The Field Below. Textarea field.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage setIAgreeToTheTermsOfCheckboxField() {
-        if (!iAgreeToTheTermsOf.isSelected()) {
-            iAgreeToTheTermsOf.click();
-        }
+    public AddressesPage setIfYouWouldLikeToAddTextareaField() {
+        return setIfYouWouldLikeToAddTextareaField(data.get("IF_YOU_WOULD_LIKE_TO_ADD"));
+    }
+
+    /**
+     * Set value to If You Would Like To Add A Comment About Your Order Please Write It In The Field Below. Textarea field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage setIfYouWouldLikeToAddTextareaField(String ifYouWouldLikeToAddValue) {
+        ifYouWouldLikeToAdd.sendKeys(ifYouWouldLikeToAddValue);
         return this;
     }
 
     /**
      * Set default value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage setProductSuccessfullyAddedToYourShoppingTextField() {
+    public AddressesPage setProductSuccessfullyAddedToYourShoppingTextField() {
         return setProductSuccessfullyAddedToYourShoppingTextField(data.get("PRODUCT_SUCCESSFULLY_ADDED_TO_YOUR_SHOPPING"));
     }
 
     /**
      * Set value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
+    public AddressesPage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
         productSuccessfullyAddedToYourShopping.sendKeys(productSuccessfullyAddedToYourShoppingValue);
+        return this;
+    }
+
+    /**
+     * Set Use The Delivery Address As The Billing Address. Checkbox field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage setUseTheDeliveryAddressAsTheCheckboxField() {
+        if (!useTheDeliveryAddressAsThe.isSelected()) {
+            useTheDeliveryAddressAsThe.click();
+        }
         return this;
     }
 
     /**
      * Submit the form to target page.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage submit() {
+    public AddressesPage submit() {
         clickSearchButton();
         return this;
     }
 
     /**
-     * Unset I Agree To The Terms Of Service And Will Adhere To Them Unconditionally. Checkbox field.
+     * Unset default value from Choose A Billing Address Drop Down List field.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage unsetIAgreeToTheTermsOfCheckboxField() {
-        if (iAgreeToTheTermsOf.isSelected()) {
-            iAgreeToTheTermsOf.click();
+    public AddressesPage unsetChooseABillingAddressDropDownListField() {
+        return unsetChooseABillingAddressDropDownListField(data.get("CHOOSE_A_BILLING_ADDRESS"));
+    }
+
+    /**
+     * Unset value from Choose A Billing Address Drop Down List field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage unsetChooseABillingAddressDropDownListField(String chooseABillingAddressValue) {
+        new Select(chooseABillingAddress).deselectByVisibleText(chooseABillingAddressValue);
+        return this;
+    }
+
+    /**
+     * Unset default value from Choose A Delivery Address Drop Down List field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage unsetChooseADeliveryAddressDropDownListField() {
+        return unsetChooseADeliveryAddressDropDownListField(data.get("CHOOSE_A_DELIVERY_ADDRESS"));
+    }
+
+    /**
+     * Unset value from Choose A Delivery Address Drop Down List field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage unsetChooseADeliveryAddressDropDownListField(String chooseADeliveryAddressValue) {
+        new Select(chooseADeliveryAddress).deselectByVisibleText(chooseADeliveryAddressValue);
+        return this;
+    }
+
+    /**
+     * Unset Use The Delivery Address As The Billing Address. Checkbox field.
+     *
+     * @return the AddressesPage class instance.
+     */
+    public AddressesPage unsetUseTheDeliveryAddressAsTheCheckboxField() {
+        if (useTheDeliveryAddressAsThe.isSelected()) {
+            useTheDeliveryAddressAsThe.click();
         }
         return this;
     }
@@ -980,9 +1081,9 @@ public class ShippingPage {
     /**
      * Verify that the page loaded completely.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage verifyPageLoaded() {
+    public AddressesPage verifyPageLoaded() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
@@ -994,9 +1095,9 @@ public class ShippingPage {
     /**
      * Verify that current page URL matches the expected URL.
      *
-     * @return the ShippingPage class instance.
+     * @return the AddressesPage class instance.
      */
-    public ShippingPage verifyPageUrl() {
+    public AddressesPage verifyPageUrl() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);

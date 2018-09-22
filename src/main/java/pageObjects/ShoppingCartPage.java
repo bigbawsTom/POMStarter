@@ -1,3 +1,4 @@
+package pageObjects;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class MyAccountPage {
+public class ShoppingCartPage {
     private Map<String, String> data;
     private WebDriver driver;
     private int timeout = 15;
@@ -31,7 +32,7 @@ public class MyAccountPage {
 
     @FindBy(css = "a[title='View my shopping cart']")
     @CacheLookup
-    private WebElement cart0ProductProductsEmpty;
+    private WebElement cart1ProductProducts1651;
 
     @FindBy(css = "#block_top_menu ul.sf-menu.clearfix.menu-content.sf-js-enabled.sf-arrows li:nth-of-type(1) ul.submenu-container.clearfix.first-in-line-xs li:nth-of-type(2) ul li:nth-of-type(1) a")
     @CacheLookup
@@ -49,6 +50,14 @@ public class MyAccountPage {
     @CacheLookup
     private WebElement checkOut;
 
+    @FindBy(css = "#center_column div:nth-of-type(1) div:nth-of-type(2) small a")
+    @CacheLookup
+    private WebElement colorOrangeSize;
+
+    @FindBy(css = "#product_1_1_0_101119 td:nth-of-type(2) small:nth-of-type(2) a")
+    @CacheLookup
+    private WebElement colorOrangeSizeS;
+
     @FindBy(css = "a[title='Contact Us']")
     @CacheLookup
     private WebElement contactUs1;
@@ -56,6 +65,10 @@ public class MyAccountPage {
     @FindBy(css = "a[title='Contact us']")
     @CacheLookup
     private WebElement contactUs2;
+
+    @FindBy(css = "a.button-exclusive.btn.btn-default")
+    @CacheLookup
+    private WebElement continueShopping;
 
     @FindBy(css = "#block_top_menu ul.sf-menu.clearfix.menu-content.sf-js-enabled.sf-arrows li:nth-of-type(1) ul.submenu-container.clearfix.first-in-line-xs li:nth-of-type(2) a.sf-with-ul")
     @CacheLookup
@@ -93,6 +106,30 @@ public class MyAccountPage {
     @CacheLookup
     private WebElement facebook;
 
+    @FindBy(css = "a.cart_block_product_name")
+    @CacheLookup
+    private WebElement faded;
+
+    @FindBy(css = "a.cart-images")
+    @CacheLookup
+    private WebElement fadedShortSleeveTshirts1;
+
+    @FindBy(css = "#center_column div:nth-of-type(1) div:nth-of-type(2) p.product-name a")
+    @CacheLookup
+    private WebElement fadedShortSleeveTshirts2;
+
+    @FindBy(css = "#product_1_1_0_101119 td:nth-of-type(1) a")
+    @CacheLookup
+    private WebElement fadedShortSleeveTshirts3;
+
+    @FindBy(css = "#product_1_1_0_101119 td:nth-of-type(2) p.product-name a")
+    @CacheLookup
+    private WebElement fadedShortSleeveTshirts4;
+
+    @FindBy(name = "quantity_1_1_0_101119")
+    @CacheLookup
+    private WebElement fadedShortSleeveTshirts5;
+
     @FindBy(css = "a.account")
     @CacheLookup
     private WebElement frodoLastname;
@@ -101,29 +138,17 @@ public class MyAccountPage {
     @CacheLookup
     private WebElement googlePlus;
 
-    @FindBy(css = "a[title='Home']")
-    @CacheLookup
-    private WebElement home;
-
     @FindBy(css = "a[title='Manage my customer account']")
     @CacheLookup
     private WebElement myAccount;
 
-    @FindBy(css = "a[title='Addresses']")
-    @CacheLookup
-    private WebElement myAddresses1;
-
     @FindBy(css = "a[title='My addresses']")
     @CacheLookup
-    private WebElement myAddresses2;
-
-    @FindBy(css = "a[title='Credit slips']")
-    @CacheLookup
-    private WebElement myCreditSlips1;
+    private WebElement myAddresses;
 
     @FindBy(css = "a[title='My credit slips']")
     @CacheLookup
-    private WebElement myCreditSlips2;
+    private WebElement myCreditSlips;
 
     @FindBy(css = "a[title='My orders']")
     @CacheLookup
@@ -133,14 +158,6 @@ public class MyAccountPage {
     @CacheLookup
     private WebElement myPersonalInfo;
 
-    @FindBy(css = "a[title='Information']")
-    @CacheLookup
-    private WebElement myPersonalInformation;
-
-    @FindBy(css = "a[title='My wishlists']")
-    @CacheLookup
-    private WebElement myWishlists;
-
     @FindBy(css = "a[title='New products']")
     @CacheLookup
     private WebElement newProducts;
@@ -149,21 +166,25 @@ public class MyAccountPage {
     @CacheLookup
     private WebElement ok;
 
-    @FindBy(css = "a[title='Orders']")
+    @FindBy(css = "a[title='Product detail']")
     @CacheLookup
-    private WebElement orderHistoryAndDetails;
+    private WebElement orangeS;
 
     @FindBy(css = "a[title='Our stores']")
     @CacheLookup
     private WebElement ourStores;
 
-    private final String pageLoadedText = "Here you can manage all of your personal information and orders";
+    private final String pageLoadedText = "Faded Short Sleeve T-shirts";
 
-    private final String pageUrl = "/index.php?controller=my-account";
+    private final String pageUrl = "/index.php?controller=order";
 
-    @FindBy(css = "a.btn.btn-default.button.button-medium")
+    @FindBy(css = "#layer_cart div:nth-of-type(1) div:nth-of-type(2) div:nth-of-type(4) a.btn.btn-default.button.button-medium")
     @CacheLookup
-    private WebElement proceedToCheckout;
+    private WebElement proceedToCheckout1;
+
+    @FindBy(css = "a.button.btn.btn-default.standard-checkout.button-medium")
+    @CacheLookup
+    private WebElement proceedToCheckout2;
 
     @FindBy(id = "search_query_top")
     @CacheLookup
@@ -245,20 +266,20 @@ public class MyAccountPage {
     @CacheLookup
     private WebElement youtube;
 
-    public MyAccountPage() {
+    public ShoppingCartPage() {
     }
 
-    public MyAccountPage(WebDriver driver) {
+    public ShoppingCartPage(WebDriver driver) {
         this();
         this.driver = driver;
     }
 
-    public MyAccountPage(WebDriver driver, Map<String, String> data) {
+    public ShoppingCartPage(WebDriver driver, Map<String, String> data) {
         this(driver);
         this.data = data;
     }
 
-    public MyAccountPage(WebDriver driver, Map<String, String> data, int timeout) {
+    public ShoppingCartPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
         this.timeout = timeout;
     }
@@ -266,9 +287,9 @@ public class MyAccountPage {
     /**
      * Click on About Us Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickAboutUsLink() {
+    public ShoppingCartPage clickAboutUsLink() {
         aboutUs.click();
         return this;
     }
@@ -276,9 +297,9 @@ public class MyAccountPage {
     /**
      * Click on Best Sellers Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickBestSellersLink() {
+    public ShoppingCartPage clickBestSellersLink() {
         bestSellers.click();
         return this;
     }
@@ -286,9 +307,9 @@ public class MyAccountPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickBlouses1Link() {
+    public ShoppingCartPage clickBlouses1Link() {
         blouses1.click();
         return this;
     }
@@ -296,29 +317,29 @@ public class MyAccountPage {
     /**
      * Click on Blouses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickBlouses2Link() {
+    public ShoppingCartPage clickBlouses2Link() {
         blouses2.click();
         return this;
     }
 
     /**
-     * Click on Cart 0 Product Products Empty Link.
+     * Click on Cart 1 Product Products 16.51 Empty Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickCart0ProductProductsEmptyLink() {
-        cart0ProductProductsEmpty.click();
+    public ShoppingCartPage clickCart1ProductProducts1651Link() {
+        cart1ProductProducts1651.click();
         return this;
     }
 
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickCasualDresses1Link() {
+    public ShoppingCartPage clickCasualDresses1Link() {
         casualDresses1.click();
         return this;
     }
@@ -326,9 +347,9 @@ public class MyAccountPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickCasualDresses2Link() {
+    public ShoppingCartPage clickCasualDresses2Link() {
         casualDresses2.click();
         return this;
     }
@@ -336,9 +357,9 @@ public class MyAccountPage {
     /**
      * Click on Casual Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickCasualDresses3Link() {
+    public ShoppingCartPage clickCasualDresses3Link() {
         casualDresses3.click();
         return this;
     }
@@ -346,19 +367,39 @@ public class MyAccountPage {
     /**
      * Click on Check Out Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickCheckOutLink() {
+    public ShoppingCartPage clickCheckOutLink() {
         checkOut.click();
+        return this;
+    }
+
+    /**
+     * Click on Color Orange Size S Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickColorOrangeSizeLink() {
+        colorOrangeSize.click();
+        return this;
+    }
+
+    /**
+     * Click on Color Orange Size S Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickColorOrangeSizeSLink() {
+        colorOrangeSizeS.click();
         return this;
     }
 
     /**
      * Click on Contact Us Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickContactUs1Link() {
+    public ShoppingCartPage clickContactUs1Link() {
         contactUs1.click();
         return this;
     }
@@ -366,19 +407,29 @@ public class MyAccountPage {
     /**
      * Click on Contact Us Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickContactUs2Link() {
+    public ShoppingCartPage clickContactUs2Link() {
         contactUs2.click();
+        return this;
+    }
+
+    /**
+     * Click on Continue Shopping Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickContinueShoppingLink() {
+        continueShopping.click();
         return this;
     }
 
     /**
      * Click on Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickDresses1Link() {
+    public ShoppingCartPage clickDresses1Link() {
         dresses1.click();
         return this;
     }
@@ -386,9 +437,9 @@ public class MyAccountPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickDresses2Link() {
+    public ShoppingCartPage clickDresses2Link() {
         dresses2.click();
         return this;
     }
@@ -396,9 +447,9 @@ public class MyAccountPage {
     /**
      * Click on Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickDresses3Link() {
+    public ShoppingCartPage clickDresses3Link() {
         dresses3.click();
         return this;
     }
@@ -406,9 +457,9 @@ public class MyAccountPage {
     /**
      * Click on Ecommerce Software By Prestashop Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickEcommerceSoftwareByPrestashopLink() {
+    public ShoppingCartPage clickEcommerceSoftwareByPrestashopLink() {
         ecommerceSoftwareByPrestashop.click();
         return this;
     }
@@ -416,9 +467,9 @@ public class MyAccountPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickEveningDresses1Link() {
+    public ShoppingCartPage clickEveningDresses1Link() {
         eveningDresses1.click();
         return this;
     }
@@ -426,9 +477,9 @@ public class MyAccountPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickEveningDresses2Link() {
+    public ShoppingCartPage clickEveningDresses2Link() {
         eveningDresses2.click();
         return this;
     }
@@ -436,9 +487,9 @@ public class MyAccountPage {
     /**
      * Click on Evening Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickEveningDresses3Link() {
+    public ShoppingCartPage clickEveningDresses3Link() {
         eveningDresses3.click();
         return this;
     }
@@ -446,19 +497,69 @@ public class MyAccountPage {
     /**
      * Click on Facebook Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickFacebookLink() {
+    public ShoppingCartPage clickFacebookLink() {
         facebook.click();
+        return this;
+    }
+
+    /**
+     * Click on Faded... Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickFadedLink() {
+        faded.click();
+        return this;
+    }
+
+    /**
+     * Click on Faded Short Sleeve Tshirts Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickFadedShortSleeveTshirts1Link() {
+        fadedShortSleeveTshirts1.click();
+        return this;
+    }
+
+    /**
+     * Click on Faded Short Sleeve Tshirts Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickFadedShortSleeveTshirts2Link() {
+        fadedShortSleeveTshirts2.click();
+        return this;
+    }
+
+    /**
+     * Click on Faded Short Sleeve Tshirts Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickFadedShortSleeveTshirts3Link() {
+        fadedShortSleeveTshirts3.click();
+        return this;
+    }
+
+    /**
+     * Click on Faded Short Sleeve Tshirts Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickFadedShortSleeveTshirts4Link() {
+        fadedShortSleeveTshirts4.click();
         return this;
     }
 
     /**
      * Click on Frodo Lastname Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickFrodoLastnameLink() {
+    public ShoppingCartPage clickFrodoLastnameLink() {
         frodoLastname.click();
         return this;
     }
@@ -466,29 +567,19 @@ public class MyAccountPage {
     /**
      * Click on Google Plus Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickGooglePlusLink() {
+    public ShoppingCartPage clickGooglePlusLink() {
         googlePlus.click();
-        return this;
-    }
-
-    /**
-     * Click on Home Link.
-     *
-     * @return the MyAccountPage class instance.
-     */
-    public MyAccountPage clickHomeLink() {
-        home.click();
         return this;
     }
 
     /**
      * Click on My Account Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickMyAccountLink() {
+    public ShoppingCartPage clickMyAccountLink() {
         myAccount.click();
         return this;
     }
@@ -496,49 +587,29 @@ public class MyAccountPage {
     /**
      * Click on My Addresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickMyAddresses1Link() {
-        myAddresses1.click();
-        return this;
-    }
-
-    /**
-     * Click on My Addresses Link.
-     *
-     * @return the MyAccountPage class instance.
-     */
-    public MyAccountPage clickMyAddresses2Link() {
-        myAddresses2.click();
+    public ShoppingCartPage clickMyAddressesLink() {
+        myAddresses.click();
         return this;
     }
 
     /**
      * Click on My Credit Slips Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickMyCreditSlips1Link() {
-        myCreditSlips1.click();
-        return this;
-    }
-
-    /**
-     * Click on My Credit Slips Link.
-     *
-     * @return the MyAccountPage class instance.
-     */
-    public MyAccountPage clickMyCreditSlips2Link() {
-        myCreditSlips2.click();
+    public ShoppingCartPage clickMyCreditSlipsLink() {
+        myCreditSlips.click();
         return this;
     }
 
     /**
      * Click on My Orders Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickMyOrdersLink() {
+    public ShoppingCartPage clickMyOrdersLink() {
         myOrders.click();
         return this;
     }
@@ -546,39 +617,19 @@ public class MyAccountPage {
     /**
      * Click on My Personal Info Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickMyPersonalInfoLink() {
+    public ShoppingCartPage clickMyPersonalInfoLink() {
         myPersonalInfo.click();
-        return this;
-    }
-
-    /**
-     * Click on My Personal Information Link.
-     *
-     * @return the MyAccountPage class instance.
-     */
-    public MyAccountPage clickMyPersonalInformationLink() {
-        myPersonalInformation.click();
-        return this;
-    }
-
-    /**
-     * Click on My Wishlists Link.
-     *
-     * @return the MyAccountPage class instance.
-     */
-    public MyAccountPage clickMyWishlistsLink() {
-        myWishlists.click();
         return this;
     }
 
     /**
      * Click on New Products Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickNewProductsLink() {
+    public ShoppingCartPage clickNewProductsLink() {
         newProducts.click();
         return this;
     }
@@ -586,29 +637,29 @@ public class MyAccountPage {
     /**
      * Click on Ok Button.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickOkButton() {
+    public ShoppingCartPage clickOkButton() {
         ok.click();
         return this;
     }
 
     /**
-     * Click on Order History And Details Link.
+     * Click on Orange S Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickOrderHistoryAndDetailsLink() {
-        orderHistoryAndDetails.click();
+    public ShoppingCartPage clickOrangeSLink() {
+        orangeS.click();
         return this;
     }
 
     /**
      * Click on Our Stores Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickOurStoresLink() {
+    public ShoppingCartPage clickOurStoresLink() {
         ourStores.click();
         return this;
     }
@@ -616,19 +667,29 @@ public class MyAccountPage {
     /**
      * Click on Proceed To Checkout Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickProceedToCheckoutLink() {
-        proceedToCheckout.click();
+    public ShoppingCartPage clickProceedToCheckout1Link() {
+        proceedToCheckout1.click();
+        return this;
+    }
+
+    /**
+     * Click on Proceed To Checkout Link.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage clickProceedToCheckout2Link() {
+        proceedToCheckout2.click();
         return this;
     }
 
     /**
      * Click on Search Button.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSearchButton() {
+    public ShoppingCartPage clickSearchButton() {
         search.click();
         return this;
     }
@@ -636,9 +697,9 @@ public class MyAccountPage {
     /**
      * Click on Sign Out Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSignOut1Link() {
+    public ShoppingCartPage clickSignOut1Link() {
         signOut1.click();
         return this;
     }
@@ -646,9 +707,9 @@ public class MyAccountPage {
     /**
      * Click on Sign Out Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSignOut2Link() {
+    public ShoppingCartPage clickSignOut2Link() {
         signOut2.click();
         return this;
     }
@@ -656,9 +717,9 @@ public class MyAccountPage {
     /**
      * Click on Sitemap Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSitemapLink() {
+    public ShoppingCartPage clickSitemapLink() {
         sitemap.click();
         return this;
     }
@@ -666,9 +727,9 @@ public class MyAccountPage {
     /**
      * Click on Specials Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSpecialsLink() {
+    public ShoppingCartPage clickSpecialsLink() {
         specials.click();
         return this;
     }
@@ -676,9 +737,9 @@ public class MyAccountPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSummerDresses1Link() {
+    public ShoppingCartPage clickSummerDresses1Link() {
         summerDresses1.click();
         return this;
     }
@@ -686,9 +747,9 @@ public class MyAccountPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSummerDresses2Link() {
+    public ShoppingCartPage clickSummerDresses2Link() {
         summerDresses2.click();
         return this;
     }
@@ -696,9 +757,9 @@ public class MyAccountPage {
     /**
      * Click on Summer Dresses Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSummerDresses3Link() {
+    public ShoppingCartPage clickSummerDresses3Link() {
         summerDresses3.click();
         return this;
     }
@@ -706,9 +767,9 @@ public class MyAccountPage {
     /**
      * Click on Supportseleniumframework.com Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickSupportseleniumframeworkComLink() {
+    public ShoppingCartPage clickSupportseleniumframeworkComLink() {
         supportseleniumframeworkCom.click();
         return this;
     }
@@ -716,9 +777,9 @@ public class MyAccountPage {
     /**
      * Click on Terms And Conditions Of Use Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickTermsAndConditionsOfUseLink() {
+    public ShoppingCartPage clickTermsAndConditionsOfUseLink() {
         termsAndConditionsOfUse.click();
         return this;
     }
@@ -726,9 +787,9 @@ public class MyAccountPage {
     /**
      * Click on Tops Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickTops1Link() {
+    public ShoppingCartPage clickTops1Link() {
         tops1.click();
         return this;
     }
@@ -736,9 +797,9 @@ public class MyAccountPage {
     /**
      * Click on Tops Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickTops2Link() {
+    public ShoppingCartPage clickTops2Link() {
         tops2.click();
         return this;
     }
@@ -746,9 +807,9 @@ public class MyAccountPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickTshirts1Link() {
+    public ShoppingCartPage clickTshirts1Link() {
         tshirts1.click();
         return this;
     }
@@ -756,9 +817,9 @@ public class MyAccountPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickTshirts2Link() {
+    public ShoppingCartPage clickTshirts2Link() {
         tshirts2.click();
         return this;
     }
@@ -766,9 +827,9 @@ public class MyAccountPage {
     /**
      * Click on Tshirts Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickTshirts3Link() {
+    public ShoppingCartPage clickTshirts3Link() {
         tshirts3.click();
         return this;
     }
@@ -776,9 +837,9 @@ public class MyAccountPage {
     /**
      * Click on Twitter Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickTwitterLink() {
+    public ShoppingCartPage clickTwitterLink() {
         twitter.click();
         return this;
     }
@@ -786,9 +847,9 @@ public class MyAccountPage {
     /**
      * Click on Women Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickWomen1Link() {
+    public ShoppingCartPage clickWomen1Link() {
         women1.click();
         return this;
     }
@@ -796,9 +857,9 @@ public class MyAccountPage {
     /**
      * Click on Women Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickWomen2Link() {
+    public ShoppingCartPage clickWomen2Link() {
         women2.click();
         return this;
     }
@@ -806,9 +867,9 @@ public class MyAccountPage {
     /**
      * Click on Youtube Link.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage clickYoutubeLink() {
+    public ShoppingCartPage clickYoutubeLink() {
         youtube.click();
         return this;
     }
@@ -816,10 +877,11 @@ public class MyAccountPage {
     /**
      * Fill every fields in the page.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage fill() {
+    public ShoppingCartPage fill() {
         setProductSuccessfullyAddedToYourShoppingTextField();
+        setFadedShortSleeveTshirts5TextField();
         setEcommerceSoftwareByPrestashopTextField2014();
         return this;
     }
@@ -827,9 +889,9 @@ public class MyAccountPage {
     /**
      * Fill every fields in the page and submit it to target page.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage fillAndSubmit() {
+    public ShoppingCartPage fillAndSubmit() {
         fill();
         return submit();
     }
@@ -837,37 +899,56 @@ public class MyAccountPage {
     /**
      * Set default value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage setEcommerceSoftwareByPrestashopTextField2014() {
+    public ShoppingCartPage setEcommerceSoftwareByPrestashopTextField2014() {
         return setEcommerceSoftwareByPrestashopTextField2014(data.get("ECOMMERCE_SOFTWARE_BY_PRESTASHOP_2014"));
     }
 
     /**
      * Set value to 2014 Ecommerce Software By Prestashop Text field.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
+    public ShoppingCartPage setEcommerceSoftwareByPrestashopTextField2014(String ecommerceSoftwareByPrestashopValue2014) {
         ecommerceSoftwareByPrestashop2014.sendKeys(ecommerceSoftwareByPrestashopValue2014);
+        return this;
+    }
+
+    /**
+     * Set default value to Faded Short Sleeve Tshirts Text field.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage setFadedShortSleeveTshirts5TextField() {
+        return setFadedShortSleeveTshirts5TextField(data.get("FADED_SHORT_SLEEVE_TSHIRTS_5"));
+    }
+
+    /**
+     * Set value to Faded Short Sleeve Tshirts Text field.
+     *
+     * @return the ShoppingCartPage class instance.
+     */
+    public ShoppingCartPage setFadedShortSleeveTshirts5TextField(String fadedShortSleeveTshirts5Value) {
+        fadedShortSleeveTshirts5.sendKeys(fadedShortSleeveTshirts5Value);
         return this;
     }
 
     /**
      * Set default value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage setProductSuccessfullyAddedToYourShoppingTextField() {
+    public ShoppingCartPage setProductSuccessfullyAddedToYourShoppingTextField() {
         return setProductSuccessfullyAddedToYourShoppingTextField(data.get("PRODUCT_SUCCESSFULLY_ADDED_TO_YOUR_SHOPPING"));
     }
 
     /**
      * Set value to Product Successfully Added To Your Shopping Cart Text field.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
+    public ShoppingCartPage setProductSuccessfullyAddedToYourShoppingTextField(String productSuccessfullyAddedToYourShoppingValue) {
         productSuccessfullyAddedToYourShopping.sendKeys(productSuccessfullyAddedToYourShoppingValue);
         return this;
     }
@@ -875,9 +956,9 @@ public class MyAccountPage {
     /**
      * Submit the form to target page.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage submit() {
+    public ShoppingCartPage submit() {
         clickSearchButton();
         return this;
     }
@@ -885,9 +966,9 @@ public class MyAccountPage {
     /**
      * Verify that the page loaded completely.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage verifyPageLoaded() {
+    public ShoppingCartPage verifyPageLoaded() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getPageSource().contains(pageLoadedText);
@@ -899,9 +980,9 @@ public class MyAccountPage {
     /**
      * Verify that current page URL matches the expected URL.
      *
-     * @return the MyAccountPage class instance.
+     * @return the ShoppingCartPage class instance.
      */
-    public MyAccountPage verifyPageUrl() {
+    public ShoppingCartPage verifyPageUrl() {
         (new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getCurrentUrl().contains(pageUrl);
