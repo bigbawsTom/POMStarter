@@ -12,6 +12,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import pageObjects.AddressesPage;
+import pageObjects.AuthenticationPage;
 import pageObjects.BankWirePage;
 import pageObjects.CheckPaymentPage;
 import pageObjects.ContactPage;
@@ -32,7 +33,9 @@ import pageObjects.WomenPage;
 
 public class Steps2 {
 	WebDriver driver;
-	AddressesPage addressesPage = PageFactory.initElements(driver, AddressesPage.class); 
+	
+	AddressesPage addressesPage = PageFactory.initElements(driver, AddressesPage.class);
+	AuthenticationPage authenticationPage = PageFactory.initElements(driver, AuthenticationPage.class);
 	BankWirePage bankWirePage = PageFactory.initElements(driver, BankWirePage.class);
 	CheckPaymentPage checkPaymentPage = PageFactory.initElements(driver, CheckPaymentPage.class);
 	ContactPage contactPage = PageFactory.initElements(driver, ContactPage.class);

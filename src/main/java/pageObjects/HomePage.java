@@ -1,4 +1,5 @@
 package pageObjects;
+
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
@@ -18,69 +19,69 @@ public class HomePage {
     @CacheLookup
     private WebElement aboutUs;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=1&token=616138373ad72158663e0b9abd0ac71b']")
+    @FindBy(css = "#homefeatured li:nth-of-type(1) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart1;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=2&token=a325baccdd081373907e9abbe36767db']")
+    @FindBy(css = "#blockbestsellers li:nth-of-type(3) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart10;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=5&token=a325baccdd081373907e9abbe36767db']")
+    @FindBy(css = "#blockbestsellers li:nth-of-type(4) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart11;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=3&token=a325baccdd081373907e9abbe36767db']")
+    @FindBy(css = "#blockbestsellers li:nth-of-type(5) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart12;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=6&token=a325baccdd081373907e9abbe36767db']")
+    @FindBy(css = "#blockbestsellers li:nth-of-type(6) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart13;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=4&token=a325baccdd081373907e9abbe36767db']")
+    @FindBy(css = "#blockbestsellers li:nth-of-type(7) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart14;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=2&token=616138373ad72158663e0b9abd0ac71b']")
+    @FindBy(css = "#homefeatured li:nth-of-type(2) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart2;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=3&token=616138373ad72158663e0b9abd0ac71b']")
+    @FindBy(css = "#homefeatured li:nth-of-type(3) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart3;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=4&token=616138373ad72158663e0b9abd0ac71b']")
+    @FindBy(css = "#homefeatured li:nth-of-type(4) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart4;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=5&token=616138373ad72158663e0b9abd0ac71b']")
+    @FindBy(css = "#homefeatured li:nth-of-type(5) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart5;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=6&token=616138373ad72158663e0b9abd0ac71b']")
+    @FindBy(css = "#homefeatured li:nth-of-type(6) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart6;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=7&token=616138373ad72158663e0b9abd0ac71b']")
+    @FindBy(css = "#homefeatured li:nth-of-type(7) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart7;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=7&token=a325baccdd081373907e9abbe36767db']")
+    @FindBy(css = "#blockbestsellers li:nth-of-type(1) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart8;
 
-    @FindBy(css = "a[href='http://automationpractice.com/index.php?controller=cart&add=1&id_product=1&token=a325baccdd081373907e9abbe36767db']")
+    @FindBy(css = "#blockbestsellers li:nth-of-type(2) div.product-container div:nth-of-type(2) div:nth-of-type(2) a:nth-of-type(1)")
     @CacheLookup
     private WebElement addToCart9;
 
     @FindBy(css = "a.blockbestsellers")
     @CacheLookup
-    private WebElement bestSellers1;
+    private WebElement bestSellers;
 
     @FindBy(css = "a[title='Best sellers']")
     @CacheLookup
-    private WebElement bestSellers;
+    private WebElement bestSellers1;
 
     @FindBy(css = "#homefeatured li:nth-of-type(2) div.product-container div:nth-of-type(2) h5 a.product-name")
     @CacheLookup
@@ -169,10 +170,6 @@ public class HomePage {
     @FindBy(css = "#blockbestsellers li:nth-of-type(2) div.product-container div:nth-of-type(2) h5 a.product-name")
     @CacheLookup
     private WebElement fadedShortSleeveTshirts2;
-
-    @FindBy(css = "a.account")
-    @CacheLookup
-    private WebElement frodoLastname;
 
     @FindBy(css = "a[href='https://plus.google.com/111979135243110831526/posts']")
     @CacheLookup
@@ -414,13 +411,9 @@ public class HomePage {
     @CacheLookup
     private WebElement shopNow5;
 
-    @FindBy(css = "a.logout")
+    @FindBy(css = "a.login")
     @CacheLookup
-    private WebElement signOut1;
-
-    @FindBy(css = "a[title='Sign out']")
-    @CacheLookup
-    private WebElement signOut2;
+    private WebElement signIn;
 
     @FindBy(css = "a[title='Sitemap']")
     @CacheLookup
@@ -659,8 +652,8 @@ public class HomePage {
      *
      * @return the HomePage class instance.
      */
-    public HomePage clickBestSellersLink1() {
-        bestSellers1.click();
+    public HomePage clickBestSellersLink() {
+        bestSellers.click();
         return this;
     }
 
@@ -669,8 +662,8 @@ public class HomePage {
      *
      * @return the HomePage class instance.
      */
-    public HomePage clickBestSellersLink() {
-        bestSellers1.click();
+    public HomePage clickBestSellersLink1() {
+        bestSellers.click();
         return this;
     }
 
@@ -881,16 +874,6 @@ public class HomePage {
      */
     public HomePage clickFadedShortSleeveTshirts2Link() {
         fadedShortSleeveTshirts2.click();
-        return this;
-    }
-
-    /**
-     * Click on Frodo Lastname Link.
-     *
-     * @return the HomePage class instance.
-     */
-    public HomePage clickFrodoLastnameLink() {
-        frodoLastname.click();
         return this;
     }
 
@@ -1475,22 +1458,12 @@ public class HomePage {
     }
 
     /**
-     * Click on Sign Out Link.
+     * Click on Sign In Link.
      *
      * @return the HomePage class instance.
      */
-    public HomePage clickSignOut1Link() {
-        signOut1.click();
-        return this;
-    }
-
-    /**
-     * Click on Sign Out Link.
-     *
-     * @return the HomePage class instance.
-     */
-    public HomePage clickSignOut2Link() {
-        signOut2.click();
+    public HomePage clickSignInLink() {
+        signIn.click();
         return this;
     }
 
@@ -1751,3 +1724,6 @@ public class HomePage {
         return this;
     }
 }
+
+
+   
