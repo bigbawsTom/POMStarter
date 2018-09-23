@@ -62,11 +62,7 @@ public class Steps {
 	
 	@Given("^a user has navigated to the landing page$")
 	public void a_user_has_navigated_to_the_landing_page() throws Throwable {
-		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver");
-		this.driver = new ChromeDriver();
-		this.driver.manage().window().maximize();
-		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		pageObjectManager = new PageObjectManager(driver);
+		setupDriver();
 		homePage = pageObjectManager.getHomePage();
 		homePage.navigateTo_HomePage();	
 	}
@@ -75,9 +71,7 @@ public class Steps {
 	public void user_enters_Credentials_to_LogIn(DataTable dt) throws Throwable {
 		List<String> list = dt.asList(String.class);
 		authenticationPage = pageObjectManager.getAuthenticationPage();
-		authenticationPage.setEmail(list.get(0));
-		authenticationPage.setPassword(list.get(1));
-		authenticationPage.clickSubmit();
+		authenticationPage.login(list.get(0),list.get(1));
 	}
 
 	@When("^user clicks on \"([^\"]*)\" navigation bar option$")
@@ -135,6 +129,14 @@ public class Steps {
 	@Then("^verify header \"([^\"]*)\" matches \"([^\"]*)\"$")
 	public void verify_header_matches(String arg1, String arg2) throws Throwable {
 	   
+	}
+	
+	public void setupDriver() {
+		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver");
+		this.driver = new ChromeDriver();
+		this.driver.manage().window().maximize();
+		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		pageObjectManager = new PageObjectManager(driver);
 	}
 	
 	

@@ -59,6 +59,12 @@ public class AuthenticationPage {
 	public void setEmail(String email) {
 		this.email.sendKeys(email);
 	}
+	
+	public void login(String email,String password) {
+		setEmail(email);
+		setPassword(password);
+		clickSubmit();
+	}
 
 	
 }
