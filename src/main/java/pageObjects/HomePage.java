@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,6 +15,7 @@ public class HomePage {
     private Map<String, String> data;
     private WebDriver driver;
     private int timeout = 15;
+    private String homeURL = "http://automationpractice.com";
 
     @FindBy(css = "a[title='About us']")
     @CacheLookup
@@ -483,8 +485,8 @@ public class HomePage {
     }
 
     public HomePage(WebDriver driver) {
-        this();
-        this.driver = driver;
+    	this.driver = driver;
+		PageFactory.initElements(driver, this);
     }
 
     public HomePage(WebDriver driver, Map<String, String> data) {
@@ -1723,6 +1725,12 @@ public class HomePage {
         });
         return this;
     }
+    
+    public void navigateTo_HomePage() {
+		driver.get(this.homeURL);
+	}
+    
+    
 }
 
 
