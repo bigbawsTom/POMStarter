@@ -34,10 +34,11 @@ public class Steps2 {
 	WebDriver driver;
 	AddressesPage addressesPage = PageFactory.initElements(driver, AddressesPage.class); 
 	BankWirePage bankWirePage = PageFactory.initElements(driver, BankWirePage.class);
-	CheckPaymentPage contactPage = PageFactory.initElements(driver, CheckPaymentPage.class);
-	ContactPage creditSlipsPage = PageFactory.initElements(driver, ContactPage.class);
-	CreditSlipsPage dressesPage = PageFactory.initElements(driver, CreditSlipsPage.class);
+	CheckPaymentPage checkPaymentPage = PageFactory.initElements(driver, CheckPaymentPage.class);
+	ContactPage contactPage = PageFactory.initElements(driver, ContactPage.class);
+	CreditSlipsPage creditSlipsPage = PageFactory.initElements(driver, CreditSlipsPage.class);
 	HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+	DressesPage dressesPage = PageFactory.initElements(driver, DressesPage.class);
 	MyAccountPage myAccountPage = PageFactory.initElements(driver, MyAccountPage.class);
 	MyAddressesPage myAddressesPage = PageFactory.initElements(driver, MyAddressesPage.class); 
 	MyWishlistsPage myWishlistsPage = PageFactory.initElements(driver, MyWishlistsPage.class);
