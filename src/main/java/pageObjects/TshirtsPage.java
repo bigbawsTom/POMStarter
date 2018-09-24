@@ -3,9 +3,13 @@ import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -289,6 +293,8 @@ public class TshirtsPage {
     @FindBy(css = "a.btn.btn-default.button.button-medium")
     @CacheLookup
     private WebElement proceedToCheckout;
+    
+    
 
     @FindBy(id = "search_query_top")
     @CacheLookup
@@ -418,8 +424,8 @@ public class TshirtsPage {
     }
 
     public TshirtsPage(WebDriver driver) {
-        this();
-        this.driver = driver;
+    	this.driver = driver;
+		PageFactory.initElements(driver, this);
     }
 
     public TshirtsPage(WebDriver driver, Map<String, String> data) {
@@ -918,6 +924,12 @@ public class TshirtsPage {
      * @return the TshirtsPage class instance.
      */
     public TshirtsPage clickListLink() {
+    	try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         list.click();
         return this;
     }
@@ -1112,7 +1124,10 @@ public class TshirtsPage {
      * @return the TshirtsPage class instance.
      */
     public TshirtsPage clickProceedToCheckoutLink() {
-        proceedToCheckout.click();
+    	JavascriptExecutor jse = ((JavascriptExecutor)driver);
+    	jse.executeScript("arguments[0].click();",proceedToCheckout );
+
+        //proceedToCheckout.click();
         return this;
     }
 

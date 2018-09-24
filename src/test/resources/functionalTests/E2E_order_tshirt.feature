@@ -4,21 +4,22 @@ Feature: Order T-Shirt (and Verify in Order History)
   @tag1
   Scenario: Order T-Shirt
   Given a user has navigated to the landing page
+  And user clicks on "log in" navigation bar option
   When User enters Credentials to LogIn
-		| Username   | Password |
     | someone@example.com| Password123 |
-    And user clicks on "t-shirt" menu
-    And user selects size "medium"
-    And user selects color "orange"
-   	And user clicks button "add to cart"
-   	And user clicks button "proceed to checkout"
-   	And user clicks button "proceed to checkout"
-		And user clicks button "proceed to checkout"
-   	And user selects checkbox "terms of service"
-   	And user clicks button "proceed to checkout"
-   	And user clicks button "pay by check"
-   	And user clicks button "i confirm my order"
-   	And user selects link "back to orders"
-   	Then verify order history contains order
+    And user clicks on "t-shirts" menu from account page
+    And user clicks button "list" on the t-shirt page
+    And user selects size "medium" on the t-shirt page
+    And user selects color "orange" on the t-shirt page
+    And user clicks button "add to cart" on the t-shirt page
+    And user clicks button "proceed to checkout" on the t-shirt page
+    And user clicks button "proceed to checkout" on the shopping cart page
+		And user clicks button "proceed to checkout" on the addresses page
+    And user selects checkbox "terms of service" on the shipping page
+   	And user clicks button "proceed to checkout" on the shipping page
+   	And user clicks button "pay by check" on the payment method page
+   	And user clicks button "i confirm my order" on the order confirmation page
+   	And user selects link "back to orders" on the order confirmation page
+   	Then verify order history contains order on the oerder history page
    	
   

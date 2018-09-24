@@ -3,16 +3,22 @@ package stepDefinitions;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
+
 import cucumber.api.DataTable;
+import cucumber.api.java.Before;
+import cucumber.api.java.After;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import managers.PageObjectManager;
+import pageObjects.AddressesPage;
 import pageObjects.AuthenticationPage;
 import pageObjects.BankWirePage;
 import pageObjects.CheckPaymentPage;
@@ -38,6 +44,7 @@ public class Steps {
 	WebElement ele;
 	private static Logger logger;
 	
+	AddressesPage addressesPage;
 	AuthenticationPage authenticationPage;
 	BankWirePage bankWirePage;
 	CheckPaymentPage checkPaymentPage;
@@ -58,11 +65,20 @@ public class Steps {
 	WomenPage womenPage;
 	
 	
+	@Before
+	public void setupDriver() {
+		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver");
+		this.driver = new ChromeDriver();
+		this.driver.manage().window().maximize();
+		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		pageObjectManager = new PageObjectManager(driver);
+	}
+	
+	
 	
 	
 	@Given("^a user has navigated to the landing page$")
 	public void a_user_has_navigated_to_the_landing_page() throws Throwable {
-		setupDriver();
 		homePage = pageObjectManager.getHomePage();
 		homePage.navigateTo_HomePage();	
 	}
@@ -75,7 +91,7 @@ public class Steps {
 	}
 
 	@When("^user clicks on \"([^\"]*)\" navigation bar option$")
-	public void user_clicks_on_menu(String option) throws Throwable {
+	public void user_clicks_on_navigation_bar_option(String option) throws Throwable {
 		homePage = pageObjectManager.getHomePage();
 		if(option.equalsIgnoreCase("log in")) {
 			homePage.clickSignInLink();
@@ -85,40 +101,170 @@ public class Steps {
 		logger.info("navigation option "+option+" not in list");
 		}
 	}
-
-	@When("^user selects size \"([^\"]*)\"$")
-	public void user_selects_size(String arg1) throws Throwable {
-	    
-	}
-
-	@When("^user selects color \"([^\"]*)\"$")
-	public void user_selects_color(String arg1) throws Throwable {
+	
+	@And("^user clicks on \"([^\"]*)\" menu from account page$")
+	public void user_clicks_on_menu_from_account_page(String menu) throws Throwable {
+		myAccountPage = pageObjectManager.getMyAccountPage();
+		 switch (menu.toLowerCase()) {
+         case "women":  
+        	 myAccountPage.clickWomen1Link();
+                  break;
+         case "dresses":  
+        	 myAccountPage.clickDresses1Link();
+                  break;
+         case "t-shirts":  
+        	 myAccountPage.clickTshirts1Link();
+        	 Thread.sleep(3000);
+                  break;
+         default: 
+        	 System.out.println("menu option "+menu+" not found");
+                  break;
+     }
 	   
 	}
 
-	@When("^user clicks button \"([^\"]*)\"$")
-	public void user_clicks_button(String arg1) throws Throwable {
+	@And("^user selects size \"([^\"]*)\" on the t-shirt page$")
+	public void user_selects_size_on_the_t_shirt_page(String size) throws Throwable {
+		tshirtsPage = pageObjectManager.getTshirtsPage();
+		switch (size.toLowerCase()) {
+        case "small":  
+        	tshirtsPage.clickS11Link();
+                 break;
+        case "medium":  
+        	tshirtsPage.clickM11Link();
+        	Thread.sleep(2000);
+                 break;
+        case "large":  
+        	tshirtsPage.clickL11Link();
+                 break;
+        default: 
+       	 System.out.println("size "+size+" not an option");
+                 break;
+    }
 	    
 	}
 
-	@When("^user selects checkbox \"([^\"]*)\"$")
-	public void user_selects_checkbox(String arg1) throws Throwable {
+	@And("^user selects color \"([^\"]*)\" on the t-shirt page$")
+	public void user_selects_color_on_the_t_shirt_page(String color) throws Throwable {
+		tshirtsPage = pageObjectManager.getTshirtsPage();
+		switch (color.toLowerCase()) {
+        case "orange":  
+        	tshirtsPage.clickOrange11Link();
+        	Thread.sleep(2000);
+                 break;
+        case "blue":  
+        	tshirtsPage.clickBlue11Link();
+                 break;
+        default: 
+       	 System.out.println("color "+color+" not an option");
+                 break;
+    }
+	    
+	}
+
+	@And("^user clicks button \"([^\"]*)\" on the t-shirt page$")
+	public void user_clicks_button_on_the_t_shirt_page(String button) throws Throwable {
+		tshirtsPage = pageObjectManager.getTshirtsPage();
+		switch (button.toLowerCase()) {
+        case "add to cart":  
+        	tshirtsPage.clickAddToCartLink();
+        	Thread.sleep(5000);
+                 break;
+        case "list":  
+        	tshirtsPage.clickListLink();
+                 break;
+        case "proceed to checkout":  
+        	tshirtsPage.clickProceedToCheckoutLink();
+                 break;
+        default: 
+       	 System.out.println("button "+button+" not an option");
+                 break;
+    }
+	    
+	}
+	
+	@And("^user clicks button \"([^\"]*)\" on the shopping cart page$")
+	public void user_clicks_button_on_the_shopping_cart_page(String button) throws Throwable {
+		shoppingCartPage = pageObjectManager.getShoppingCartPage();
+		switch (button.toLowerCase()) {
+        case "proceed to checkout":  
+        	shoppingCartPage.clickProceedToCheckout2Link();
+        	Thread.sleep(2000);
+                 break;
+        default: 
+       	 System.out.println("button "+button+" not an option");
+                 break;
+    }
+	   
+	}
+	
+	@And("^user clicks button \"([^\"]*)\" on the addresses page$")
+	public void user_clicks_button_on_the_addresses_page(String button) throws Throwable {
+		addressesPage = pageObjectManager.getAddressesPage();
+		switch (button.toLowerCase()) {
+        case "proceed to checkout":  
+        	addressesPage.clickProceedToCheckout2Button();
+                 break;
+        default: 
+       	 System.out.println("button "+button+" not an option");
+                 break;
+    }
+	   
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@And("^user selects checkbox \"([^\"]*)\" on the shipping page$")
+	public void user_selects_checkbox_on_the_shipping_page(String arg1) throws Throwable {
 	   
 	}
 
-	@When("^user selects link \"([^\"]*)\"$")
-	public void user_selects_link(String arg1) throws Throwable {
-	    
-	}
-
-	@Then("^verify order history contains order$")
-	public void verify_order_history_contains_order() throws Throwable {
-	    
-	}
-
-	@When("^user enters \"([^\"]*)\" as \"([^\"]*)\"$")
-	public void user_enters_as(String arg1, String arg2) throws Throwable {
+	@And("^user clicks button \"([^\"]*)\" on the shipping page$")
+	public void user_clicks_button_on_the_shipping_page(String arg1) throws Throwable {
 	   
+	}
+
+	@And("^user clicks button \"([^\"]*)\" on the payment method page$")
+	public void user_clicks_button_on_the_payment_method_page(String arg1) throws Throwable {
+	    
+	}
+
+	@And("^user clicks button \"([^\"]*)\" on the order confirmation page$")
+	public void user_clicks_button_on_the_order_confirmation_page(String arg1) throws Throwable {
+	    
+	}
+
+	@And("^user selects link \"([^\"]*)\" on the order confirmation page$")
+	public void user_selects_link_on_the_order_confirmation_page(String arg1) throws Throwable {
+	   
+	}
+
+	@And("^verify order history contains order on the oerder history page$")
+	public void verify_order_history_contains_order_on_the_oerder_history_page() throws Throwable {
+	  
+	}
+	
+	@And("^user clicks button \"([^\"]*)\" on the my account page$")
+	public void user_clicks_button_on_the_my_account_page(String arg1) throws Throwable {
+	   
+	}
+
+	@And("^user enters \"([^\"]*)\" as \"([^\"]*)\" on the personal information page$")
+	public void user_enters_as_on_the_personal_information_page(String arg1, String arg2) throws Throwable {
+	    
+	}
+
+	@And("^user clicks button \"([^\"]*)\" on the personal information page$")
+	public void user_clicks_button_on_the_personal_information_page(String arg1) throws Throwable {
+	  
 	}
 
 	@Then("^verify message \"([^\"]*)\"$")
@@ -131,14 +277,36 @@ public class Steps {
 	   
 	}
 	
-	public void setupDriver() {
-		System.setProperty("webdriver.chrome.driver","Drivers/chromedriver");
-		this.driver = new ChromeDriver();
-		this.driver.manage().window().maximize();
-		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		pageObjectManager = new PageObjectManager(driver);
-	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	
+	
+	@After
+	public void closeDown() throws InterruptedException {
+		Thread.sleep(6000);
+		driver.close();
+	}
 	
 	
 	
