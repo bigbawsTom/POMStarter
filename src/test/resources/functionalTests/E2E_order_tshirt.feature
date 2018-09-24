@@ -17,9 +17,9 @@ Feature: Order T-Shirt (and Verify in Order History)
 		And user clicks button "proceed to checkout" on the addresses page
     And user selects checkbox "terms of service" on the shipping page
    	And user clicks button "proceed to checkout" on the shipping page
-   	And user clicks button "pay by check" on the payment method page
-   	And user clicks button "i confirm my order" on the order confirmation page
-   	And user selects link "back to orders" on the order confirmation page
-   	Then verify order history contains order on the oerder history page
+    And user clicks button "pay by check" on the payment method page
+   	And user clicks button "I confirm my order" on the check payment page
+    And user selects link "back to orders" on the order confirmation page
+    Then verify order history contains order on the order history page
    	
   

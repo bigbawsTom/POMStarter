@@ -2,7 +2,10 @@ package stepDefinitions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -43,6 +46,7 @@ public class Steps {
 	PageObjectManager pageObjectManager;
 	WebElement ele;
 	private static Logger logger;
+	String orderRef="";
 	
 	AddressesPage addressesPage;
 	AuthenticationPage authenticationPage;
@@ -211,46 +215,91 @@ public class Steps {
     }
 	   
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@And("^user selects checkbox \"([^\"]*)\" on the shipping page$")
-	public void user_selects_checkbox_on_the_shipping_page(String arg1) throws Throwable {
+	public void user_selects_checkbox_on_the_shipping_page(String name) throws Throwable {
+	   shippingPage = pageObjectManager.getShippingPage();
+	   switch (name.toLowerCase()) {
+       case "terms of service":  
+    	   shippingPage.setIAgreeToTheTermsOfCheckboxField();
+                break;
+       default: 
+      	 System.out.println("checkbox name "+name+" not an option");
+                break;
+   }
 	   
 	}
 
 	@And("^user clicks button \"([^\"]*)\" on the shipping page$")
-	public void user_clicks_button_on_the_shipping_page(String arg1) throws Throwable {
+	public void user_clicks_button_on_the_shipping_page(String button) throws Throwable {
+		shippingPage = pageObjectManager.getShippingPage();
+		switch (button.toLowerCase()) {
+        case "proceed to checkout":  
+        	shippingPage.clickProceedToCheckout2Button();
+                 break;
+        default: 
+       	 System.out.println("button "+button+" not an option");
+                 break;
+    }
 	   
 	}
 
 	@And("^user clicks button \"([^\"]*)\" on the payment method page$")
-	public void user_clicks_button_on_the_payment_method_page(String arg1) throws Throwable {
-	    
-	}
-
-	@And("^user clicks button \"([^\"]*)\" on the order confirmation page$")
-	public void user_clicks_button_on_the_order_confirmation_page(String arg1) throws Throwable {
-	    
-	}
-
-	@And("^user selects link \"([^\"]*)\" on the order confirmation page$")
-	public void user_selects_link_on_the_order_confirmation_page(String arg1) throws Throwable {
+	public void user_clicks_button_on_the_payment_method_page(String button) throws Throwable {
+		paymentMethodPage = pageObjectManager.getPaymentMethodPage();
+		switch (button.toLowerCase()) {
+        case "pay by check":  
+        	paymentMethodPage.clickPayByCheckOrderProcessingLink();
+                 break;
+        default: 
+       	 System.out.println("button "+button+" not an option");
+                 break;
+    }
 	   
 	}
 
-	@And("^verify order history contains order on the oerder history page$")
-	public void verify_order_history_contains_order_on_the_oerder_history_page() throws Throwable {
+	@And("^user clicks button \"([^\"]*)\" on the check payment page$")
+	public void user_clicks_button_on_the_check_payment_page(String button) throws Throwable {
+		checkPaymentPage = pageObjectManager.getCheckPaymentPage();
+		switch (button.toLowerCase()) {
+        case "i confirm my order":  
+        	checkPaymentPage.clickConfirm();
+                 break;
+        default: 
+       	 System.out.println("button "+button+" not an option");
+                 break;
+    }
+	   
+	}
+	
+
+	@And("^user selects link \"([^\"]*)\" on the order confirmation page$")
+	public void user_selects_link_on_the_order_confirmation_page(String link) throws Throwable {
+		orderConfirmationPage = pageObjectManager.getOrderConfirmationPage();
+		this.setOrderRef();
+	    System.out.println(this.getOrderRef());    
+		
+		
+		switch (link.toLowerCase()) {
+        case "back to orders":  
+        	orderConfirmationPage.clickBackToOrdersLink();
+                 break;
+        default: 
+       	 System.out.println("link "+link+" not an option");
+                 break;
+    }
+	   
+	}
+	
+	@And("^verify order history contains order on the order history page$")
+	public void verify_order_history_contains_order_on_the_order_history_page() throws Throwable {
 	  
 	}
+	
+	
+	
+	
+	
 	
 	@And("^user clicks button \"([^\"]*)\" on the my account page$")
 	public void user_clicks_button_on_the_my_account_page(String arg1) throws Throwable {
@@ -302,6 +351,28 @@ public class Steps {
 
 	
 	
+	public String getOrderRef() {
+		return orderRef;
+	}
+
+
+
+
+	public void setOrderRef() {
+		
+		WebElement ele = driver.findElement(By.className("box"));
+		String eletext = ele.getText();
+		String regEx = "([A-Z][A-Z][A-Z][A-Z][A-Z][A-Z][A-Z][A-Z][A-Z])";
+		Pattern pattern = Pattern.compile(regEx);
+		Matcher matcher = pattern.matcher(eletext);
+		while (matcher.find()) {
+			this.orderRef=matcher.group();
+		}
+	}
+
+
+
+
 	@After
 	public void closeDown() throws InterruptedException {
 		Thread.sleep(6000);
