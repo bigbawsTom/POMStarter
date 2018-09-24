@@ -14,8 +14,8 @@ public class AuthenticationPage {
 	@FindBy(id = "passwd")
 	@CacheLookup
 	private WebElement password;
-	
-	@FindBy(how = How.CSS, using = "#email") 
+
+	@FindBy(how = How.CSS, using = "#email")
 	@CacheLookup
 	private WebElement email;
 
@@ -46,11 +46,11 @@ public class AuthenticationPage {
 	public void setPassword(String password) {
 		this.password.sendKeys(password);
 	}
-	
-	 public AuthenticationPage clickSubmit() {
-		 submitLogIn.click();
-	        return this;
-	    }
+
+	public AuthenticationPage clickSubmit() {
+		submitLogIn.click();
+		return this;
+	}
 
 	public WebElement getEmail() {
 		return email;
@@ -59,12 +59,11 @@ public class AuthenticationPage {
 	public void setEmail(String email) {
 		this.email.sendKeys(email);
 	}
-	
-	public void login(String email,String password) {
+
+	public void login(String email, String password) {
 		setEmail(email);
 		setPassword(password);
 		clickSubmit();
 	}
 
-	
 }

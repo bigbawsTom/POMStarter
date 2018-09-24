@@ -24,7 +24,7 @@ import pageObjects.TshirtsPage;
 import pageObjects.WomenPage;
 
 public class PageObjectManager {
-	 WebDriver driver;
+	WebDriver driver;
 
 	AddressesPage addressesPage;
 	AuthenticationPage authenticationPage;
@@ -51,7 +51,6 @@ public class PageObjectManager {
 		this.driver = driver;
 
 	}
-
 
 	public AddressesPage getAddressesPage() {
 		return (addressesPage == null) ? addressesPage = new AddressesPage(driver) : addressesPage;
@@ -98,7 +97,8 @@ public class PageObjectManager {
 	}
 
 	public OrderConfirmationPage getOrderConfirmationPage() {
-		return (orderConfirmationPage == null) ? orderConfirmationPage = new OrderConfirmationPage(driver) : orderConfirmationPage;
+		return (orderConfirmationPage == null) ? orderConfirmationPage = new OrderConfirmationPage(driver)
+				: orderConfirmationPage;
 	}
 
 	public OrderHistoryPage getOrderHistoryPage() {
@@ -110,7 +110,8 @@ public class PageObjectManager {
 	}
 
 	public PersonalInformationPage getPersonalInformationPage() {
-		return (personalInformationPage == null) ? personalInformationPage = new PersonalInformationPage(driver) : personalInformationPage;
+		return (personalInformationPage == null) ? personalInformationPage = new PersonalInformationPage(driver)
+				: personalInformationPage;
 	}
 
 	public ShippingPage getShippingPage() {

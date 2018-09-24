@@ -115,11 +115,10 @@ public class MyAccountPage {
 	@FindBy(css = "#block_top_menu > ul > li:nth-child(3) > a")
 	@CacheLookup
 	private WebElement tshirts1;
-	
+
 	@FindBy(css = "#block_top_menu > ul > li:nth-child(2) > a")
 	@CacheLookup
 	private WebElement dresses1;
-	
 
 	@FindBy(css = "a[title='Women']")
 	@CacheLookup
@@ -382,7 +381,6 @@ public class MyAccountPage {
 		return this;
 	}
 
-
 	/**
 	 * Click on Women Link.
 	 *
@@ -402,9 +400,6 @@ public class MyAccountPage {
 		women2.click();
 		return this;
 	}
-
-
-	
 
 	/**
 	 * Set default value to Product Successfully Added To Your Shopping Cart Text

@@ -3,7 +3,7 @@ Feature: Order T-Shirt (and Verify in Order History)
 
   @tag1
   Scenario: Order T-Shirt
-  Given a user has navigated to the landing page
+  Given a user has navigated to the landing page using "firefox" browser on "mac"
   And user clicks on "log in" navigation bar option
   When User enters Credentials to LogIn
     | someone@example.com| Password123 |

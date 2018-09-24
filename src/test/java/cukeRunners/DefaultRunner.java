@@ -5,9 +5,7 @@ import cucumber.api.junit.Cucumber;
 import cucumber.api.CucumberOptions;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
-		features = "src/test/resources/functionalTests"
-		)
+@CucumberOptions(features = "src/test/resources/functionalTests")
 
 public class DefaultRunner {
 
