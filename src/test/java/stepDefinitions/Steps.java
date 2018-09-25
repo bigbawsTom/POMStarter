@@ -53,7 +53,7 @@ public class Steps {
 	WebElement ele;
 	private static Logger logger;
 	String orderRef = "";
-	
+
 	AddressesPage addressesPage;
 	AuthenticationPage authenticationPage;
 	BankWirePage bankWirePage;
@@ -352,8 +352,8 @@ public class Steps {
 		personalInformationPage = pageObjectManager.getPersonalInformationPage();
 		switch (field.toLowerCase()) {
 		case "first name":
-			//adding todays day so the test can be run with different values each day
-			String newValue = value+this.getToday();
+			// adding todays day so the test can be run with different values each day
+			String newValue = value + this.getToday();
 			personalInformationPage.clear("first name");
 			personalInformationPage.setFirstNameTextField(newValue);
 			break;
@@ -393,12 +393,12 @@ public class Steps {
 		switch (header.toLowerCase()) {
 		case "user info":
 			String actualName = personalInformationPage.getuserName();
-			
-			//splitting value and adding todays day, and rejoining
+
+			// splitting value and adding todays day, and rejoining
 			String fname = value.contains(" ") ? value.split(" ")[0] : value;
-			String fnameAndDay = fname+this.getToday().toLowerCase();
+			String fnameAndDay = fname + this.getToday().toLowerCase();
 			String Sname = value.contains(" ") ? value.split(" ")[1] : value;
-			String jointFornameAndSurname = fnameAndDay+" "+Sname;
+			String jointFornameAndSurname = fnameAndDay + " " + Sname;
 			Assert.assertEquals(jointFornameAndSurname, actualName);
 			break;
 		default:
@@ -423,7 +423,7 @@ public class Steps {
 			this.orderRef = matcher.group();
 		}
 	}
-	
+
 	public String getToday() {
 		Calendar calendar = Calendar.getInstance();
 		Date date = calendar.getTime();

@@ -1,7 +1,5 @@
-@tag
 Feature: Update Personal Information (First Name) in My Account
  
-  @tag1
   Scenario: Order T-Shirt
   Given a user has navigated to the landing page using "firefox" browser on "mac"
   And user clicks on "log in" navigation bar option

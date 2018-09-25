@@ -343,7 +343,7 @@ public class PersonalInformationPage {
 		bestSellers.click();
 		return this;
 	}
-	
+
 	public PersonalInformationPage clear(String field) {
 		switch (field.toLowerCase()) {
 		case "first name":
@@ -353,7 +353,7 @@ public class PersonalInformationPage {
 			System.out.println("field " + field + " not an option, please add if valid");
 			break;
 		}
-		
+
 		return this;
 	}
 
@@ -527,14 +527,11 @@ public class PersonalInformationPage {
 		return this;
 	}
 
-
 	public String getuserName() {
 		String name = userName.getText();
-		return name ;
+		return name;
 	}
-	
-	
-	
+
 	/**
 	 * Click on Google Plus Link.
 	 *
