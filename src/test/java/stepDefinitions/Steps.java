@@ -1,6 +1,10 @@
 package stepDefinitions;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,7 +53,7 @@ public class Steps {
 	WebElement ele;
 	private static Logger logger;
 	String orderRef = "";
-
+	
 	AddressesPage addressesPage;
 	AuthenticationPage authenticationPage;
 	BankWirePage bankWirePage;
@@ -338,27 +342,69 @@ public class Steps {
 	}
 
 	@And("^user clicks button \"([^\"]*)\" on the my account page$")
-	public void user_clicks_button_on_the_my_account_page(String arg1) throws Throwable {
-
+	public void user_clicks_button_on_the_my_account_page(String button) throws Throwable {
+		myAccountPage = pageObjectManager.getMyAccountPage();
+		myAccountPage.clickMyPersonalInformationLink();
 	}
 
 	@And("^user enters \"([^\"]*)\" as \"([^\"]*)\" on the personal information page$")
-	public void user_enters_as_on_the_personal_information_page(String arg1, String arg2) throws Throwable {
+	public void user_enters_as_on_the_personal_information_page(String field, String value) throws Throwable {
+		personalInformationPage = pageObjectManager.getPersonalInformationPage();
+		switch (field.toLowerCase()) {
+		case "first name":
+			//adding todays day so the test can be run with different values each day
+			String newValue = value+this.getToday();
+			personalInformationPage.clear("first name");
+			personalInformationPage.setFirstNameTextField(newValue);
+			break;
+		case "current password":
+			personalInformationPage.setCurrentPasswordPasswordField(value);
+			break;
+		default:
+			System.out.println("field " + field + " not an option");
+			break;
+		}
 
 	}
 
 	@And("^user clicks button \"([^\"]*)\" on the personal information page$")
-	public void user_clicks_button_on_the_personal_information_page(String arg1) throws Throwable {
-
+	public void user_clicks_button_on_the_personal_information_page(String button) throws Throwable {
+		personalInformationPage = pageObjectManager.getPersonalInformationPage();
+		switch (button.toLowerCase()) {
+		case "save":
+			personalInformationPage.clickSaveButton();
+			break;
+		default:
+			System.out.println("button " + button + " not an option");
+			break;
+		}
 	}
 
 	@Then("^verify message \"([^\"]*)\"$")
-	public void verify_message(String arg1) throws Throwable {
-
+	public void verify_message(String expectedMessage) throws Throwable {
+		WebElement ele = driver.findElement(By.className("alert"));
+		String actualMessage = ele.getText();
+		Assert.assertEquals(expectedMessage, actualMessage);
 	}
 
 	@Then("^verify header \"([^\"]*)\" matches \"([^\"]*)\"$")
-	public void verify_header_matches(String arg1, String arg2) throws Throwable {
+	public void verify_header_matches(String header, String value) throws Throwable {
+		personalInformationPage = pageObjectManager.getPersonalInformationPage();
+		switch (header.toLowerCase()) {
+		case "user info":
+			String actualName = personalInformationPage.getuserName();
+			
+			//splitting value and adding todays day, and rejoining
+			String fname = value.contains(" ") ? value.split(" ")[0] : value;
+			String fnameAndDay = fname+this.getToday().toLowerCase();
+			String Sname = value.contains(" ") ? value.split(" ")[1] : value;
+			String jointFornameAndSurname = fnameAndDay+" "+Sname;
+			Assert.assertEquals(jointFornameAndSurname, actualName);
+			break;
+		default:
+			System.out.println("header " + header + " not an option");
+			break;
+		}
 
 	}
 
@@ -376,6 +422,14 @@ public class Steps {
 		while (matcher.find()) {
 			this.orderRef = matcher.group();
 		}
+	}
+	
+	public String getToday() {
+		Calendar calendar = Calendar.getInstance();
+		Date date = calendar.getTime();
+		String today = new SimpleDateFormat("EE", Locale.ENGLISH).format(date.getTime());
+		today.toLowerCase();
+		return today;
 	}
 
 	@After

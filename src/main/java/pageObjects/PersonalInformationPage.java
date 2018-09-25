@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -129,7 +130,7 @@ public class PersonalInformationPage {
 
 	@FindBy(css = "a.account")
 	@CacheLookup
-	private WebElement frodoLastname;
+	private WebElement userName;
 
 	@FindBy(css = "a[href='https://plus.google.com/111979135243110831526/posts']")
 	@CacheLookup
@@ -299,8 +300,8 @@ public class PersonalInformationPage {
 	}
 
 	public PersonalInformationPage(WebDriver driver) {
-		this();
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 
 	public PersonalInformationPage(WebDriver driver, Map<String, String> data) {
@@ -340,6 +341,19 @@ public class PersonalInformationPage {
 	 */
 	public PersonalInformationPage clickBestSellersLink() {
 		bestSellers.click();
+		return this;
+	}
+	
+	public PersonalInformationPage clear(String field) {
+		switch (field.toLowerCase()) {
+		case "first name":
+			firstName.clear();
+			break;
+		default:
+			System.out.println("field " + field + " not an option, please add if valid");
+			break;
+		}
+		
 		return this;
 	}
 
@@ -513,16 +527,14 @@ public class PersonalInformationPage {
 		return this;
 	}
 
-	/**
-	 * Click on Frodo Lastname Link.
-	 *
-	 * @return the PersonalInformationPage class instance.
-	 */
-	public PersonalInformationPage clickFrodoLastnameLink() {
-		frodoLastname.click();
-		return this;
-	}
 
+	public String getuserName() {
+		String name = userName.getText();
+		return name ;
+	}
+	
+	
+	
 	/**
 	 * Click on Google Plus Link.
 	 *
