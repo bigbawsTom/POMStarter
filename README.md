@@ -14,3 +14,4 @@ The Framework consists of 2 Feature files:
 Running:
 1. You can run each feature file as a cucumber run by right clicking on the feature and selecting run as cucumber.
 2. From the DefaultRunner, just right click and run as JUnit, this will run both Feature files, one after another.
+3. From cmd line just enter "mvn test"
