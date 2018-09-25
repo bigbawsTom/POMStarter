@@ -1,3 +1,4 @@
+@Test
 Feature: Update Personal Information (First Name) in My Account
  
   Scenario: Order T-Shirt

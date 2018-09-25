@@ -1,6 +1,5 @@
 package pageObjects;
 
-import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -2458,6 +2457,7 @@ public class DressesPage {
 	 */
 	public DressesPage verifyPageLoaded() {
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
+			@Override
 			public Boolean apply(WebDriver d) {
 				return d.getPageSource().contains(pageLoadedText);
 			}
@@ -2472,6 +2472,7 @@ public class DressesPage {
 	 */
 	public DressesPage verifyPageUrl() {
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
+			@Override
 			public Boolean apply(WebDriver d) {
 				return d.getCurrentUrl().contains(pageUrl);
 			}

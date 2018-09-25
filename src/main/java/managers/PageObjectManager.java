@@ -1,8 +1,6 @@
 package managers;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-
 import pageObjects.AddressesPage;
 import pageObjects.AuthenticationPage;
 import pageObjects.BankWirePage;

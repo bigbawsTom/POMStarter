@@ -1,3 +1,4 @@
+@Test
 Feature: Order T-Shirt (and Verify in Order History)
 
   Scenario: Order T-Shirt

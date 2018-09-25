@@ -1254,6 +1254,7 @@ public class PersonalInformationPage {
 	 */
 	public PersonalInformationPage verifyPageLoaded() {
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
+			@Override
 			public Boolean apply(WebDriver d) {
 				return d.getPageSource().contains(pageLoadedText);
 			}
@@ -1268,6 +1269,7 @@ public class PersonalInformationPage {
 	 */
 	public PersonalInformationPage verifyPageUrl() {
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
+			@Override
 			public Boolean apply(WebDriver d) {
 				return d.getCurrentUrl().contains(pageUrl);
 			}

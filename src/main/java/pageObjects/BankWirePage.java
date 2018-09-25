@@ -1,11 +1,9 @@
 package pageObjects;
 
-import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -936,6 +934,7 @@ public class BankWirePage {
 	 */
 	public BankWirePage verifyPageLoaded() {
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
+			@Override
 			public Boolean apply(WebDriver d) {
 				return d.getPageSource().contains(pageLoadedText);
 			}
@@ -950,6 +949,7 @@ public class BankWirePage {
 	 */
 	public BankWirePage verifyPageUrl() {
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
+			@Override
 			public Boolean apply(WebDriver d) {
 				return d.getCurrentUrl().contains(pageUrl);
 			}
