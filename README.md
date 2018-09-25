@@ -5,6 +5,7 @@ Framework using:
 -Page Factory
 -Cucumber
 -Maven
+-extent reports
 
 The Framework consists of 2 Feature files:
 1. E2E Buying a T-Shirt from a demo store.
